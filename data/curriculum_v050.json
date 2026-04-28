@@ -1,0 +1,190 @@
+{
+  "version": "v0.5.0_20260428_1443",
+  "modules": [
+    {
+      "id": "iniciante",
+      "level": 1,
+      "title": "Iniciante",
+      "methods": [
+        "Leila Fletcher Piano Course",
+        "Bastien Piano Basics",
+        "Hanon Preparatório"
+      ],
+      "goal": "Construir base de postura, leitura inicial e coordenação simples.",
+      "lessons": [
+        {
+          "id": "iniciante-01",
+          "title": "Postura e posição das mãos",
+          "xp": 15,
+          "pdf": "lessons/iniciante/postura_maos.pdf"
+        },
+        {
+          "id": "iniciante-02",
+          "title": "Numeração dos dedos e teclas brancas",
+          "xp": 20,
+          "pdf": "lessons/iniciante/dedos_teclas.pdf"
+        },
+        {
+          "id": "iniciante-03",
+          "title": "Primeiras notas no pentagrama",
+          "xp": 25,
+          "pdf": "lessons/iniciante/primeiras_notas.pdf"
+        },
+        {
+          "id": "iniciante-04",
+          "title": "Pulso, compasso e ritmo simples",
+          "xp": 30,
+          "pdf": "lessons/iniciante/ritmo_simples.pdf"
+        }
+      ]
+    },
+    {
+      "id": "elementar",
+      "level": 2,
+      "title": "Elementar",
+      "methods": [
+        "Beyer Op.101",
+        "Czerny Op.599",
+        "Hanon Exercícios 1–10"
+      ],
+      "goal": "Evoluir leitura, independência básica das mãos, escalas e acompanhamento simples.",
+      "lessons": [
+        {
+          "id": "elementar-01",
+          "title": "Leitura nas claves de sol e fá",
+          "xp": 35,
+          "pdf": "lessons/elementar/claves_sol_fa.pdf"
+        },
+        {
+          "id": "elementar-02",
+          "title": "Escalas maiores iniciais",
+          "xp": 40,
+          "pdf": "lessons/elementar/escalas_maiores.pdf"
+        },
+        {
+          "id": "elementar-03",
+          "title": "Coordenação das mãos",
+          "xp": 45,
+          "pdf": "lessons/elementar/coordenacao_maos.pdf"
+        },
+        {
+          "id": "elementar-04",
+          "title": "Pequenas peças progressivas",
+          "xp": 50,
+          "pdf": "lessons/elementar/pecas_progressivas.pdf"
+        }
+      ]
+    },
+    {
+      "id": "intermediario",
+      "level": 3,
+      "title": "Intermediário",
+      "methods": [
+        "Burgmüller Op.100",
+        "Bach Pequenos Prelúdios",
+        "Sonatinas fáceis"
+      ],
+      "goal": "Trabalhar fraseado, dinâmica, articulação, pedal e repertório clássico estruturado.",
+      "lessons": [
+        {
+          "id": "intermediario-01",
+          "title": "Dinâmica e articulação",
+          "xp": 55,
+          "pdf": "lessons/intermediario/dinamica_articulacao.pdf"
+        },
+        {
+          "id": "intermediario-02",
+          "title": "Pedal e fraseado",
+          "xp": 60,
+          "pdf": "lessons/intermediario/pedal_fraseado.pdf"
+        },
+        {
+          "id": "intermediario-03",
+          "title": "Estudos expressivos",
+          "xp": 65,
+          "pdf": "lessons/intermediario/estudos_expressivos.pdf"
+        },
+        {
+          "id": "intermediario-04",
+          "title": "Bach e independência melódica",
+          "xp": 70,
+          "pdf": "lessons/intermediario/bach_independencia.pdf"
+        }
+      ]
+    },
+    {
+      "id": "avancado",
+      "level": 4,
+      "title": "Avançado",
+      "methods": [
+        "Czerny Op.299",
+        "Bach Invenções",
+        "Sonatas clássicas"
+      ],
+      "goal": "Desenvolver velocidade, controle técnico, contraponto, ornamentos e interpretação.",
+      "lessons": [
+        {
+          "id": "avancado-01",
+          "title": "Técnica de velocidade",
+          "xp": 80,
+          "pdf": "lessons/avancado/tecnica_velocidade.pdf"
+        },
+        {
+          "id": "avancado-02",
+          "title": "Contraponto e invenções",
+          "xp": 85,
+          "pdf": "lessons/avancado/contraponto_invencoes.pdf"
+        },
+        {
+          "id": "avancado-03",
+          "title": "Sonatinas e forma clássica",
+          "xp": 90,
+          "pdf": "lessons/avancado/sonatinas_forma.pdf"
+        },
+        {
+          "id": "avancado-04",
+          "title": "Interpretação avançada",
+          "xp": 100,
+          "pdf": "lessons/avancado/interpretacao_avancada.pdf"
+        }
+      ]
+    },
+    {
+      "id": "aperfeicoamento",
+      "level": 5,
+      "title": "Aperfeiçoamento",
+      "methods": [
+        "Chopin Estudos",
+        "Beethoven Sonatas",
+        "Liszt / repertório virtuosístico"
+      ],
+      "goal": "Preparar performance, refinamento técnico, musicalidade e repertório de alto nível.",
+      "lessons": [
+        {
+          "id": "aperfeicoamento-01",
+          "title": "Estudos virtuosísticos",
+          "xp": 120,
+          "pdf": "lessons/aperfeicoamento/estudos_virtuosisticos.pdf"
+        },
+        {
+          "id": "aperfeicoamento-02",
+          "title": "Sonatas e obras extensas",
+          "xp": 140,
+          "pdf": "lessons/aperfeicoamento/sonatas_obras.pdf"
+        },
+        {
+          "id": "aperfeicoamento-03",
+          "title": "Performance e memória musical",
+          "xp": 160,
+          "pdf": "lessons/aperfeicoamento/performance_memoria.pdf"
+        },
+        {
+          "id": "aperfeicoamento-04",
+          "title": "Recital final",
+          "xp": 200,
+          "pdf": "lessons/aperfeicoamento/recital_final.pdf"
+        }
+      ]
+    }
+  ]
+}

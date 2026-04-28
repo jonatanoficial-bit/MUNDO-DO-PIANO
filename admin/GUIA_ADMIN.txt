@@ -1,0 +1,42 @@
+GUIA DO ADMIN - Mundo do Piano World Key
+Build v0.8.0_20260428_1527
+
+COMO ADICIONAR PDFs
+1. Abra a pasta /lessons/.
+2. Escolha o módulo:
+   /lessons/iniciante/
+   /lessons/elementar/
+   /lessons/intermediario/
+   /lessons/avancado/
+   /lessons/aperfeicoamento/
+3. Coloque o PDF dentro da pasta.
+4. Abra /data/curriculum_v050.json ou /data/curriculum.json.
+5. Em "pdf", coloque o caminho do arquivo. Exemplo:
+   "pdf": "lessons/iniciante/meu_metodo_aula_01.pdf"
+6. Suba o projeto no GitHub/Vercel.
+
+COMO ADICIONAR MÚSICAS
+1. Coloque o áudio em /music/.
+   Exemplo:
+   /music/minha_musica.mp3
+2. Coloque a capa em /assets/covers/.
+   Exemplo:
+   /assets/covers/minha_capa.png
+3. Abra /data/songs.json.
+4. Adicione um item:
+   {
+     "id": "minha_musica",
+     "title": "Minha Música",
+     "artist": "Nome do Artista",
+     "level": "Iniciante",
+     "category": "Gospel",
+     "cover": "assets/covers/minha_capa.png",
+     "audio": "music/minha_musica.mp3",
+     "enabled": true
+   }
+
+OBSERVAÇÕES IMPORTANTES
+- Não use espaços nem acentos nos nomes dos arquivos.
+- Prefira nomes assim: aula_01_postura.pdf, minha_musica.mp3.
+- Para GitHub/Vercel, mantenha tudo dentro da pasta do projeto.
+- Se o arquivo for muito pesado, pode deixar o PDF hospedado fora e colocar o link completo no campo "pdf".

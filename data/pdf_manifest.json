@@ -1,0 +1,242 @@
+{
+  "files": [
+    {
+      "original_name": "25-estudos-para-piano-burgmuller.pdf",
+      "new_name": "burgmuller-op-100-25-estudos.pdf",
+      "module": "03_intermediario",
+      "new_path": "lessons/03_intermediario/burgmuller-op-100-25-estudos.pdf",
+      "size_mb": 2.83,
+      "sha256": "3ecbfd3fc24d5a4e4aaef631b2d8c7adf42521872862c2aab66f0928f7d15f31"
+    },
+    {
+      "original_name": "a-dose-do-dia-vol1-edna-mae-burnam-warner-chappel-pdf-free.pdf",
+      "new_name": "edna-mae-burnam-a-dose-do-dia-vol-1.pdf",
+      "module": "01_iniciante",
+      "new_path": "lessons/01_iniciante/edna-mae-burnam-a-dose-do-dia-vol-1.pdf",
+      "size_mb": 3.23,
+      "sha256": "d44861a97330df75ab354db450c1cc3d31977cbd8f3784a8c77c02ffbeb8c85b"
+    },
+    {
+      "original_name": "bach-inventions-1-15.pdf",
+      "new_name": "bach-inventions-1-a-15.pdf",
+      "module": "03_intermediario",
+      "new_path": "lessons/03_intermediario/bach-inventions-1-a-15.pdf",
+      "size_mb": 1.13,
+      "sha256": "82979b0eb5df995da25ec0922e611803191013fd78e261972eee70185e900e0f"
+    },
+    {
+      "original_name": "bartok-mikrokosmos-1-6pdf (2).pdf",
+      "new_name": "bartok-mikrokosmos-volumes-1-a-6.pdf",
+      "module": "03_intermediario",
+      "new_path": "lessons/03_intermediario/bartok-mikrokosmos-volumes-1-a-6.pdf",
+      "size_mb": 12.55,
+      "sha256": "5980c9b762eec3e480cc365abfef522c06ae51a3e4501a96e75921631cc589ee"
+    },
+    {
+      "original_name": "bastien-level-1pdf-.pdf",
+      "new_name": "bastien-level-1.pdf",
+      "module": "01_iniciante",
+      "new_path": "lessons/01_iniciante/bastien-level-1.pdf",
+      "size_mb": 8.44,
+      "sha256": "832e06093852242f560c1ee90a641a58a41f3b5f68869f08bcc42f42f4b1d309"
+    },
+    {
+      "original_name": "benoit-exercicio-1.pdf",
+      "new_name": "benoit-exercicio-1.pdf",
+      "module": "02_elementar_tecnica",
+      "new_path": "lessons/02_elementar_tecnica/benoit-exercicio-1.pdf",
+      "size_mb": 0.05,
+      "sha256": "b290b3d5a729c852a1f8e9a79475733b76ea23af064a95a8db65256dc3fe91ae"
+    },
+    {
+      "original_name": "bohumil-med-teoria-da-musica-4-ediao-revista-e-ampliada-cropped-pdf.pdf",
+      "new_name": "bohumil-med-teoria-da-musica-4-ediao-revista-e-ampliada-cropped.pdf",
+      "module": "00_teoria_musical",
+      "new_path": "lessons/00_teoria_musical/bohumil-med-teoria-da-musica-4-ediao-revista-e-ampliada-cropped.pdf",
+      "size_mb": 29.02,
+      "sha256": "6098b7faeea386724bb91dcf1bc24abf6492387b2ab87d3f62b5ce7a87be190d"
+    },
+    {
+      "original_name": "carl-czerny-op-299-3-pdf-free.pdf",
+      "new_name": "czerny-op-299-vol-3.pdf",
+      "module": "04_avancado",
+      "new_path": "lessons/04_avancado/czerny-op-299-vol-3.pdf",
+      "size_mb": 32.01,
+      "sha256": "ba98d6deb652df9c839559485a1be466bc17247dcefe9cb4ad5258952a270a8d"
+    },
+    {
+      "original_name": "CESI - MARCIANO vol1.pdf",
+      "new_name": "cesi-marciano-volume-1.pdf",
+      "module": "01_iniciante",
+      "new_path": "lessons/01_iniciante/cesi-marciano-volume-1.pdf",
+      "size_mb": 1.26,
+      "sha256": "1c5e1aecc48906874ea15ac573dd039b26baf18ef99c0bc35f75f5a6de570a02"
+    },
+    {
+      "original_name": "CZERNY-BarrosoNeto-60 estudos.pdf",
+      "new_name": "czerny-barroso-neto-60-estudos.pdf",
+      "module": "99_revisar",
+      "new_path": "lessons/99_revisar/czerny-barroso-neto-60-estudos.pdf",
+      "size_mb": 2.23,
+      "sha256": "3700bed9ebcec09a779463fe82a770122e07cf9f00aa7f3648a900fcecc2351b"
+    },
+    {
+      "original_name": "escola-da-velocidade-op-61-hermann-berens-pdf-pdf-free.pdf",
+      "new_name": "hermann-berens-op-61-escola-da-velocidade.pdf",
+      "module": "04_avancado",
+      "new_path": "lessons/04_avancado/hermann-berens-op-61-escola-da-velocidade.pdf",
+      "size_mb": 11.21,
+      "sha256": "cef1d6e506e901bbee32db34bccf47e495a7f57e59654edf7034f0fd092dccbe"
+    },
+    {
+      "original_name": "exercicios-de-tecnica-para-piano-ondine-melo-frag-pegar-o-resto-se-tiver-3.pdf",
+      "new_name": "ondine-melo-exercicios-de-tecnica-para-piano.pdf",
+      "module": "02_elementar_tecnica",
+      "new_path": "lessons/02_elementar_tecnica/ondine-melo-exercicios-de-tecnica-para-piano.pdf",
+      "size_mb": 4.24,
+      "sha256": "c1e8dd13411855fb2c8d143dafd24ddb3fa52ee5838e685070c2553ddcc3d85f"
+    },
+    {
+      "original_name": "Hanon - 60 Exercícios - O Pianista Virtuoso.pdf",
+      "new_name": "hanon-60-exercicios-o-pianista-virtuoso.pdf",
+      "module": "02_elementar_tecnica",
+      "new_path": "lessons/02_elementar_tecnica/hanon-60-exercicios-o-pianista-virtuoso.pdf",
+      "size_mb": 7.23,
+      "sha256": "1b2c204bfabe02a93ab66d119370fb97c369255c9dfdbe91e1c6a247882c11ba"
+    },
+    {
+      "original_name": "mario-mascarenhas-duas-maozinhas-no-tecladopdf.pdf",
+      "new_name": "mario-mascarenhas-duas-maozinhas-no-teclado.pdf",
+      "module": "01_iniciante",
+      "new_path": "lessons/01_iniciante/mario-mascarenhas-duas-maozinhas-no-teclado.pdf",
+      "size_mb": 15.34,
+      "sha256": "883fba645d1946171cf72e39c4467966d602022d2713a3cf161f81e32c825256"
+    },
+    {
+      "original_name": "Metodo Infantil FRANCISCO RUSSO.pdf",
+      "new_name": "francisco-russo-metodo-infantil.pdf",
+      "module": "01_iniciante",
+      "new_path": "lessons/01_iniciante/francisco-russo-metodo-infantil.pdf",
+      "size_mb": 11.76,
+      "sha256": "6370c39370af70f6466fb1c4f068e4be48b9f6a1f0ea5027d3638e58a41c5509"
+    },
+    {
+      "original_name": "metodos-de-piano-pdf-free.pdf",
+      "new_name": "metodos-de-piano-referencia.pdf",
+      "module": "01_iniciante",
+      "new_path": "lessons/01_iniciante/metodos-de-piano-referencia.pdf",
+      "size_mb": 0.28,
+      "sha256": "b7a814bae2455e55695bafddf9359f0cfabf76e8f0e30839de56b8426a632b4f"
+    },
+    {
+      "original_name": "Meu Piano é divertido VOL.1.pdf",
+      "new_name": "meu-piano-e-divertido-vol-1.pdf",
+      "module": "01_iniciante",
+      "new_path": "lessons/01_iniciante/meu-piano-e-divertido-vol-1.pdf",
+      "size_mb": 25.7,
+      "sha256": "13bc0d11e1974610972d21939f24417160c2f87bbd67e29d24d3e88da5e83502"
+    },
+    {
+      "original_name": "Meu-Piano-e-Divertido-2.pdf",
+      "new_name": "meu-piano-e-divertido-vol-2.pdf",
+      "module": "99_revisar",
+      "new_path": "lessons/99_revisar/meu-piano-e-divertido-vol-2.pdf",
+      "size_mb": 2.09,
+      "sha256": "02d2dab4a64c6780d43413f6f1ba2bc1dc422372d04592b3b91ff4a1819c2edf"
+    },
+    {
+      "original_name": "muzio-clementi-sonatinas (2).pdf",
+      "new_name": "clementi-sonatinas.pdf",
+      "module": "03_intermediario",
+      "new_path": "lessons/03_intermediario/clementi-sonatinas.pdf",
+      "size_mb": 2.99,
+      "sha256": "c21da214fb634924a0c93c0dc2d16b6a90c44f40f3edb539ed16bab112ab6e90"
+    },
+    {
+      "original_name": "ob_e41471_metodo-4-suzuki-piano.pdf",
+      "new_name": "suzuki-piano-metodo-4.pdf",
+      "module": "99_revisar",
+      "new_path": "lessons/99_revisar/suzuki-piano-metodo-4.pdf",
+      "size_mb": 2.46,
+      "sha256": "91cabb74cd90f2bb220a68b3c449607b1633e7aa065ddcf5abdfb45c4aecf4e3"
+    },
+    {
+      "original_name": "ob_fbbcb4_metodo-3-suzuki-piano.pdf",
+      "new_name": "suzuki-piano-metodo-3.pdf",
+      "module": "99_revisar",
+      "new_path": "lessons/99_revisar/suzuki-piano-metodo-3.pdf",
+      "size_mb": 2.42,
+      "sha256": "f6a730c2a04d1f34ce34cc858042f65d5b8dbc3d3a03f3e6caf78a8cb7520116"
+    },
+    {
+      "original_name": "oscar-beringer-exercicios-tecnicos-diarios-parte-1.pdf",
+      "new_name": "oscar-beringer-exercicios-tecnicos-diarios-parte-1.pdf",
+      "module": "04_avancado",
+      "new_path": "lessons/04_avancado/oscar-beringer-exercicios-tecnicos-diarios-parte-1.pdf",
+      "size_mb": 13.86,
+      "sha256": "cdda19fd83ad52a5fd6af3d673e3063753286af728d40dcd84bbae0c3131c11a"
+    },
+    {
+      "original_name": "Osvaldo Lacerda - Compendio de Teoria Musical.pdf",
+      "new_name": "osvaldo-lacerda-compendio-de-teoria-musical.pdf",
+      "module": "00_teoria_musical",
+      "new_path": "lessons/00_teoria_musical/osvaldo-lacerda-compendio-de-teoria-musical.pdf",
+      "size_mb": 12.8,
+      "sha256": "f18cc5d10a68e4ea01eb07bd9444a83b855d101eb4ba94583c6b3e3c4cf63a26"
+    },
+    {
+      "original_name": "piano-liszt-complete-technical-exercises.pdf",
+      "new_name": "liszt-complete-technical-exercises.pdf",
+      "module": "05_virtuose",
+      "new_path": "lessons/05_virtuose/liszt-complete-technical-exercises.pdf",
+      "size_mb": 13.9,
+      "sha256": "5668142049affff0ef3457757b4d5d98618e4f2139a4f7bd1264cf420bf8da9b"
+    },
+    {
+      "original_name": "pozzoli-ditado-melodicopdf-pdf.pdf",
+      "new_name": "pozzoli-ditado-melodico.pdf",
+      "module": "00_teoria_musical",
+      "new_path": "lessons/00_teoria_musical/pozzoli-ditado-melodico.pdf",
+      "size_mb": 31.01,
+      "sha256": "dec8b44c1d2e9c0262f69e97d7c63664509df30810caaf6cf8a9ec4fa07b31a2"
+    },
+    {
+      "original_name": "pozzoli-guia-teorico-pratico-partes-1-e-2-ditado-musical.pdf",
+      "new_name": "pozzoli-guia-teorico-pratico-partes-1-e-2.pdf",
+      "module": "00_teoria_musical",
+      "new_path": "lessons/00_teoria_musical/pozzoli-guia-teorico-pratico-partes-1-e-2.pdf",
+      "size_mb": 8.08,
+      "sha256": "5cb0c9113ac114e03fa2b9cff43c2aa3722803b8d99d27a8068b84cfabe53d68"
+    },
+    {
+      "original_name": "suzuki-piano-school-volume-1.pdf",
+      "new_name": "suzuki-piano-school-volume-1.pdf",
+      "module": "01_iniciante",
+      "new_path": "lessons/01_iniciante/suzuki-piano-school-volume-1.pdf",
+      "size_mb": 3.0,
+      "sha256": "b1d23580d10d5d8bf3432a2eac458fadbe74010196a1824eed4db9854dc3999f"
+    }
+  ],
+  "duplicates_removed": [
+    {
+      "original": "bartok-mikrokosmos-1-6pdf.pdf",
+      "duplicate_of": "lessons/03_intermediario/bartok-mikrokosmos-volumes-1-a-6.pdf",
+      "sha256": "5980c9b762eec3e480cc365abfef522c06ae51a3e4501a96e75921631cc589ee"
+    },
+    {
+      "original": "bastien-level-1pdf.pdf",
+      "duplicate_of": "lessons/01_iniciante/bastien-level-1.pdf",
+      "sha256": "832e06093852242f560c1ee90a641a58a41f3b5f68869f08bcc42f42f4b1d309"
+    },
+    {
+      "original": "carl-czerny-op-299-3.pdf",
+      "duplicate_of": "lessons/04_avancado/czerny-op-299-vol-3.pdf",
+      "sha256": "ba98d6deb652df9c839559485a1be466bc17247dcefe9cb4ad5258952a270a8d"
+    },
+    {
+      "original": "muzio-clementi-sonatinas.pdf",
+      "duplicate_of": "lessons/03_intermediario/clementi-sonatinas.pdf",
+      "sha256": "c21da214fb634924a0c93c0dc2d16b6a90c44f40f3edb539ed16bab112ab6e90"
+    }
+  ]
+}

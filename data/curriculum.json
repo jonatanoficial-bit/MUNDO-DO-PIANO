@@ -1,0 +1,57 @@
+{
+  "classico": [
+    {
+      "level": "1",
+      "title": "Iniciante",
+      "method": "Hanon Preparatório + Leila Fletcher / Bastien",
+      "desc": "Postura, numeração dos dedos, notas no pentagrama, pulsação, claves e primeiras melodias.",
+      "progress": 0
+    },
+    {
+      "level": "2",
+      "title": "Elementar",
+      "method": "Beyer Op.101 + Czerny Op.599",
+      "desc": "Leitura progressiva, independência simples das mãos, escalas maiores e coordenação.",
+      "progress": 0
+    },
+    {
+      "level": "3",
+      "title": "Intermediário",
+      "method": "Burgmüller Op.100 + Bach Pequenos Prelúdios",
+      "desc": "Dinâmica, articulação, pedal, fraseado e repertório clássico estruturado.",
+      "progress": 0
+    },
+    {
+      "level": "4",
+      "title": "Avançado",
+      "method": "Czerny Op.299 + Bach Invenções + Sonatinas",
+      "desc": "Velocidade, precisão, ornamentos, contraponto e interpretação musical.",
+      "progress": 0
+    },
+    {
+      "level": "5",
+      "title": "Aperfeiçoamento",
+      "method": "Chopin Estudos + Beethoven Sonatas + repertório virtuosístico",
+      "desc": "Técnica refinada, musicalidade, expressão avançada e performance.",
+      "progress": 0
+    }
+  ],
+  "popular": [
+    {
+      "title": "Pop Piano",
+      "desc": "Acordes, levadas, cifras e acompanhamento moderno."
+    },
+    {
+      "title": "Gospel / Worship",
+      "desc": "Campo harmônico, pads, inversões e condução congregacional."
+    },
+    {
+      "title": "MPB / Bossa",
+      "desc": "Harmonia brasileira, síncopes e levadas características."
+    },
+    {
+      "title": "Rock / Baladas",
+      "desc": "Riffs, power chords adaptados e piano de banda."
+    }
+  ]
+}
