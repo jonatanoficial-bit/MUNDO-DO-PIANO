@@ -209,7 +209,7 @@ function openModule(id){
           <small>+${l.xp} XP · Material: ${l.pdf}</small>
           <div class="unit-actions">
             <button class="pill-btn primary" onclick="completeLesson('${l.id}')">${progress[l.id]?'Concluída ✓':'Marcar como concluída'}</button>
-            <button class="pill-btn" onclick="openPdf('${l.pdf}')">Abrir material</button>
+            <button class="pill-btn" onclick="playLesson('${l.pdf}')">Tocar aula</button>
           </div>
         </div>
         <div class="arrow">${progress[l.id]?'✓':'›'}</div>
@@ -229,7 +229,7 @@ function completeLesson(id){
   openModule(module.id);
 }
 
-function openPdf(path){
+function playLesson(path){
   openModal('Material da lição', 'Nesta build a estrutura de PDF já está pronta. Substitua o arquivo placeholder em ' + path + ' pelo PDF real do método. Depois vamos abrir o PDF dentro do app.');
 }
 
@@ -263,6 +263,11 @@ function renderProgress(){
 
 function renderAll(){ renderModules(); renderProgress(); }
 renderAll();
+
+function playLesson(title){
+  alert("Simulação de execução: " + title + "\n\n(Próxima fase: engine real de piano)");
+}
+
 </script>
 </body>
 </html>
