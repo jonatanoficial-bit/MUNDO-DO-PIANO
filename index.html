@@ -4,13 +4,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mundo do Piano</title>
 <style>
-body {margin:0;background:#000;color:#fff;font-family:Arial;}
-.screen {height:100vh;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;}
+body {margin:0;font-family:Arial;background:#000;color:#fff;}
+.screen {
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background-size:cover;
+  background-position:center;
+  display:none;
+  transition:opacity 0.3s ease;
+}
+.active {display:block;}
+.nav {
+  position:fixed;
+  bottom:0;
+  width:100%;
+  height:70px;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  border-top:1px solid rgba(212,175,55,0.4);
+}
+.nav button {
+  background:none;
+  border:none;
+  color:#D4AF37;
+  font-size:12px;
+}
 </style>
 </head>
 <body>
-<div class="screen" style="background-image:url('assets/backgrounds/bg_home_piano_dark.png')">
-<h1>Mundo do Piano</h1>
+
+<div id="home" class="screen active" style="background-image:url('assets/backgrounds/bg_home_piano_dark.png')"></div>
+<div id="learn" class="screen" style="background-image:url('assets/backgrounds/bg_classical_room.png')"></div>
+<div id="songs" class="screen" style="background-image:url('assets/backgrounds/bg_pop_stage.png')"></div>
+<div id="progress" class="screen" style="background-image:url('assets/backgrounds/bg_progress_stats.png')"></div>
+<div id="challenges" class="screen" style="background-image:url('assets/backgrounds/bg_challenges_dark.png')"></div>
+<div id="profile" class="screen" style="background-image:url('assets/backgrounds/bg_profile_piano.png')"></div>
+
+<div class="nav">
+<button onclick="show('home')">Home</button>
+<button onclick="show('learn')">Aprender</button>
+<button onclick="show('songs')">Músicas</button>
+<button onclick="show('progress')">Progresso</button>
+<button onclick="show('challenges')">Desafios</button>
+<button onclick="show('profile')">Perfil</button>
 </div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
 </body>
 </html>
