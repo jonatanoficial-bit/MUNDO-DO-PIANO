@@ -1,252 +1,286 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mundo do Piano</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Mundo do Piano – World Key</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
-  background:#000;
-  color:#fff;
-  overflow:hidden;
+:root{
+  --gold:#d8b45a;
+  --gold2:#f3d27a;
+  --dark:#050505;
+  --panel:rgba(10,10,10,.66);
+  --line:rgba(216,180,90,.38);
+  --muted:rgba(255,255,255,.72);
+  --soft:rgba(255,255,255,.10);
 }
-
-/* SCREEN SYSTEM */
-.screen{
-  position:fixed;
-  width:100%;
-  height:100vh;
-  display:none;
-  padding:20px;
-}
-
-.screen.active{
-  display:block;
-}
-
-/* BACKGROUND (cinematic) */
-.bg{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.9)),
-             radial-gradient(circle at 50% 20%, rgba(212,175,55,0.2), transparent 60%);
-  z-index:0;
-}
-
-/* CONTENT */
-.content{
+*{box-sizing:border-box}
+html,body{margin:0; min-height:100%; background:#050505; color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;}
+body{overflow-x:hidden}
+.app-shell{
+  width:min(100vw, 430px);
+  min-height:100svh;
+  margin:0 auto;
   position:relative;
-  z-index:2;
+  overflow:hidden;
+  background:#000;
+  box-shadow:0 0 80px rgba(216,180,90,.18);
 }
-
-/* HEADER */
-.header{
-  margin-top:40px;
-  margin-bottom:20px;
+.screen{
+  display:none;
+  min-height:100svh;
+  padding: max(26px, env(safe-area-inset-top)) 18px 105px;
+  position:relative;
+  isolation:isolate;
+  overflow-y:auto;
 }
-
-.title{
-  font-size:32px;
-  font-weight:600;
+.screen.active{display:block}
+.screen::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image:var(--bg);
+  background-size:cover;
+  background-position:center top;
+  z-index:-3;
+  transform:scale(1.01);
 }
-
-.subtitle{
-  font-size:14px;
-  opacity:0.7;
+.screen::after{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.22) 0%, rgba(0,0,0,.58) 42%, rgba(0,0,0,.94) 100%),
+    radial-gradient(circle at 50% 14%, rgba(216,180,90,.22), transparent 36%);
+  z-index:-2;
+  pointer-events:none;
 }
-
-/* GLASS CARD */
-.card{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(212,175,55,0.3);
-  backdrop-filter:blur(10px);
-  border-radius:18px;
-  padding:16px;
-  margin-bottom:12px;
+.topbar{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  height:42px; margin-bottom:14px;
 }
-
-/* LEVEL CARD */
-.level{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.logo-mini{display:flex; align-items:center; gap:8px; justify-content:center; flex:1; color:#fff}
+.logo-mark{
+  width:36px;height:36px;border-radius:50%;border:1px solid var(--gold);
+  display:grid;place-items:center;color:var(--gold2);font-size:20px;
+  background:rgba(0,0,0,.35); box-shadow:0 0 20px rgba(216,180,90,.22)
 }
-
-.level-title{
-  font-size:18px;
+.logo-text{line-height:1.05; text-align:left}
+.logo-text b{font-family:Georgia,serif; font-size:18px; font-weight:500}
+.logo-text span{display:block; color:var(--gold); letter-spacing:3px; font-size:8px}
+.icon-btn{
+  width:38px;height:38px;border-radius:50%;border:1px solid rgba(216,180,90,.65);
+  color:var(--gold2);display:grid;place-items:center;background:rgba(0,0,0,.38);
+  font-size:20px; backdrop-filter: blur(10px);
 }
-
-.progress{
-  height:6px;
-  background:rgba(255,255,255,0.1);
-  border-radius:10px;
-  margin-top:8px;
+.hero{padding-top:8px; margin-bottom:22px}
+.eyebrow{color:var(--gold2); letter-spacing:2.5px; font-size:11px; text-transform:uppercase}
+h1{
+  margin:0; font-family:Georgia,"Times New Roman",serif; font-size:54px; line-height:.88; letter-spacing:-1px;
+  font-weight:500; text-shadow:0 8px 24px rgba(0,0,0,.55)
 }
-
-.progress-fill{
-  height:100%;
-  width:30%;
-  background:#D4AF37;
-  border-radius:10px;
+h1 .gold{color:var(--gold2)}
+.subtitle{color:var(--muted); font-size:17px; line-height:1.35; margin-top:10px}
+.home-logo{
+  text-align:center; padding-top:58px; margin-bottom:110px;
 }
-
-/* NAV */
-.nav{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  height:80px;
-  background:rgba(0,0,0,0.8);
-  backdrop-filter:blur(20px);
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  border-top:1px solid rgba(212,175,55,0.2);
+.home-logo .mark{
+  margin:auto; width:98px;height:98px; border-radius:50%;
+  border:2px solid rgba(216,180,90,.82); display:grid; place-items:center;
+  color:var(--gold2); font-size:48px; background:rgba(0,0,0,.18)
 }
-
-.nav div{
-  text-align:center;
-  font-size:11px;
-  opacity:0.6;
+.home-logo h1{font-size:58px; margin-top:16px}
+.home-logo .tag{letter-spacing:7px; color:#fff; font-size:15px; margin-top:8px}
+.home-logo p{color:rgba(255,255,255,.82); font-size:17px; margin-top:18px}
+.path-title{text-align:center; font-family:Georgia,serif; color:var(--gold2); font-size:26px; margin-bottom:18px}
+.path-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.path-card{
+  min-height:210px; border:1px solid rgba(216,180,90,.45); border-radius:23px; overflow:hidden;
+  position:relative; padding:18px; display:flex; flex-direction:column; justify-content:flex-end;
+  background-size:cover; background-position:center; box-shadow:inset 0 -90px 80px rgba(0,0,0,.88)
 }
-
-.nav .active{
-  color:#D4AF37;
-  opacity:1;
+.path-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.76));z-index:0}
+.path-card>*{position:relative}
+.path-card .round{width:64px;height:64px;border-radius:50%;border:2px solid var(--gold2);display:grid;place-items:center;font-size:32px;color:var(--gold2);margin:0 auto 46px;background:rgba(0,0,0,.22)}
+.path-card h2{font-family:Georgia,serif;text-align:center;margin:0;font-size:27px;line-height:1.08}
+.path-card h2 span{display:block;color:var(--gold2);font-size:31px}
+.path-card p{text-align:center;color:rgba(255,255,255,.82);font-size:15px;line-height:1.32}
+.gold-btn{margin:10px auto 0;width:54px;height:54px;border-radius:50%;border:0;background:linear-gradient(#f4d681,#ad7b24);color:#fff;font-size:32px;box-shadow:0 8px 22px rgba(216,180,90,.28)}
+.tabs{
+  display:flex; background:rgba(10,10,10,.58); border:1px solid rgba(216,180,90,.24); border-radius:16px;
+  overflow:hidden; margin:18px 0;
 }
-
-/* PLAYER BAR */
+.tab{flex:1;text-align:center;padding:14px 8px;color:rgba(255,255,255,.62);font-size:16px}
+.tab.active{color:#fff;background:linear-gradient(90deg,rgba(216,180,90,.34),rgba(216,180,90,.05));box-shadow:inset 0 -3px var(--gold2)}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:18px 0 10px;color:#fff;text-transform:uppercase;letter-spacing:.5px;font-size:16px}
+.section-title span:last-child{color:var(--gold2);text-transform:none;font-size:13px}
+.lesson-card{
+  display:grid; grid-template-columns:74px 1fr 22px; gap:13px; align-items:center;
+  padding:11px; border-radius:17px; border:1px solid rgba(216,180,90,.24);
+  background:linear-gradient(90deg,rgba(20,20,20,.84),rgba(10,10,10,.70));
+  margin-bottom:10px; backdrop-filter:blur(12px);
+}
+.thumb{height:74px;border-radius:13px;background-size:cover;background-position:center;box-shadow:inset 0 -30px 40px rgba(0,0,0,.5)}
+.level-row{display:flex; gap:9px; align-items:flex-start}
+.num{width:34px;height:34px;border-radius:50%;border:2px solid var(--gold);color:var(--gold2);display:grid;place-items:center;font-family:Georgia,serif;font-size:19px;flex:0 0 auto}
+.lesson h3{margin:0;color:var(--gold2);font-family:Georgia,serif;font-size:21px;font-weight:500}
+.lesson p{margin:4px 0 0;color:rgba(255,255,255,.68);font-size:13px;line-height:1.25}
+.method{color:rgba(255,255,255,.86)!important;font-size:12px!important;margin-top:5px!important}
+.bar{height:6px;background:rgba(255,255,255,.12);border-radius:20px;margin-top:8px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,#b98425,#f1d279);border-radius:20px}
+.arrow{font-size:32px;color:var(--gold)}
+.cert{grid-template-columns:50px 1fr 22px; border-color:rgba(216,180,90,.55)}
+.cert .trophy{font-size:38px;color:var(--gold2)}
+.chips{display:flex;gap:10px;overflow-x:auto;padding:4px 0 14px;scrollbar-width:none}
+.chip{flex:0 0 auto;padding:12px 18px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07);color:#ddd}
+.chip.active{background:linear-gradient(#f7d77e,#bd8429); color:#111}
+.song-feature{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:16px}
+.song-card{
+  flex:0 0 154px; min-height:214px; border-radius:18px; border:1px solid rgba(216,180,90,.28); padding:10px;
+  display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(180deg,rgba(216,180,90,.20),rgba(0,0,0,.88)), var(--img); background-size:cover;background-position:center;
+}
+.song-card h3{font-family:Georgia,serif;margin:0;font-size:17px}
+.song-card p{margin:4px 0;color:rgba(255,255,255,.75);font-size:13px}
+.badge{display:inline-block;color:var(--gold2);border:1px solid rgba(216,180,90,.5);border-radius:6px;padding:2px 6px;font-size:11px;margin-top:4px;width:max-content}
+.list-card{display:grid;grid-template-columns:58px 1fr 38px;gap:12px;align-items:center;background:rgba(12,12,12,.78);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:10px;margin-bottom:9px}
+.cover{width:58px;height:58px;border-radius:11px;background:linear-gradient(135deg,#222,#664,#111)}
+.heart{font-size:26px;color:var(--gold2)}
 .player{
-  position:fixed;
-  bottom:80px;
-  width:100%;
-  padding:10px 20px;
+  position:sticky;bottom:88px;margin-top:16px;background:rgba(10,10,10,.86);border:1px solid rgba(216,180,90,.22);border-radius:18px;padding:11px;display:flex;align-items:center;gap:12px;backdrop-filter:blur(18px)
 }
-
-.player-card{
-  background:rgba(0,0,0,0.7);
-  border-radius:14px;
-  padding:10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.play{margin-left:auto;width:52px;height:52px;border-radius:50%;border:2px solid var(--gold2);display:grid;place-items:center;color:var(--gold2);font-size:24px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat-card{background:rgba(16,16,16,.76);border:1px solid rgba(216,180,90,.2);border-radius:18px;padding:15px;min-height:126px}
+.ring{width:130px;height:130px;border-radius:50%;border:12px solid rgba(255,255,255,.10);border-right-color:var(--gold2);border-top-color:var(--gold2);display:grid;place-items:center;margin:auto;text-align:center}
+.ring b{font-family:Georgia,serif;font-size:44px}
+.big{font-family:Georgia,serif;font-size:32px}
+.chart{height:145px;display:flex;align-items:end;gap:13px;padding:18px 8px 8px}
+.chart div{flex:1;background:linear-gradient(#f4d77e,#a97624);border-radius:5px 5px 0 0;min-height:22px;position:relative}
+.challenge{display:grid;grid-template-columns:70px 1fr 92px;gap:12px;align-items:center;background:rgba(15,15,15,.82);border:1px solid rgba(216,180,90,.23);border-radius:18px;padding:13px;margin-bottom:10px}
+.challenge .ico{width:64px;height:64px;border-radius:50%;border:2px solid rgba(216,180,90,.7);display:grid;place-items:center;color:var(--gold2);font-size:34px}
+.reward{text-align:center;color:var(--gold2)}
+.cta{border:0;border-radius:12px;background:linear-gradient(#f4d681,#b47d27);padding:10px 12px;color:#241504;font-weight:700;margin-top:5px}
+.profile-card{display:grid;grid-template-columns:92px 1fr 70px;gap:14px;align-items:center;background:rgba(16,16,16,.78);border:1px solid rgba(216,180,90,.22);border-radius:18px;padding:14px}
+.avatar{width:86px;height:86px;border-radius:50%;border:2px solid var(--gold);background:linear-gradient(135deg,#333,#111);display:grid;place-items:center;font-size:42px}
+.mini-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:rgba(16,16,16,.78);border:1px solid rgba(216,180,90,.14);border-radius:18px;margin-top:14px;overflow:hidden}
+.mini-stat{text-align:center;padding:15px 6px;border-right:1px solid rgba(255,255,255,.08)}
+.mini-stat:last-child{border-right:0}.mini-stat b{font-family:Georgia,serif;font-size:25px}.mini-stat span{display:block;color:rgba(255,255,255,.68);font-size:11px}
+.nav{
+  position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(100vw,430px);
+  height:84px;padding:7px 10px calc(7px + env(safe-area-inset-bottom));
+  background:rgba(8,8,8,.88);border-top:1px solid rgba(216,180,90,.18);
+  display:flex;justify-content:space-around;align-items:center;z-index:50;backdrop-filter:blur(22px);border-radius:22px 22px 0 0
 }
-
-.play-btn{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  border:2px solid #D4AF37;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.nav button{border:0;background:transparent;color:rgba(255,255,255,.82);font-size:11px;display:grid;gap:4px;place-items:center;min-width:62px}
+.nav button .i{font-size:25px;line-height:1}.nav button.active{color:var(--gold2)}
+.build{
+  position:fixed;left:50%;bottom:86px;transform:translateX(-50%);width:min(100vw,430px);
+  text-align:center;font-size:9px;color:rgba(255,255,255,.36);z-index:40;pointer-events:none
+}
+@media (min-width:700px){
+  body{background:radial-gradient(circle at center,rgba(216,180,90,.16),#050505 55%)}
+  .app-shell{border-left:1px solid rgba(216,180,90,.25);border-right:1px solid rgba(216,180,90,.25)}
 }
 </style>
 </head>
-
 <body>
+<div class="app-shell">
 
-<!-- LEARN SCREEN -->
-<div id="learn" class="screen active">
-<div class="bg"></div>
+<section class="screen active" id="home" style="--bg:url('assets/backgrounds/bg_home_piano_dark.png')">
+  <div class="home-logo">
+    <div class="mark">♬</div>
+    <h1>Mundo do<br><span class="gold">Piano</span></h1>
+    <div class="tag">WORLD KEY</div>
+    <p>The world of piano<br>in your hands.</p>
+  </div>
+  <div class="path-title">Choose your path</div>
+  <div class="path-grid">
+    <div class="path-card" onclick="show('learn')" style="background-image:url('assets/backgrounds/bg_classical_room.png')">
+      <div class="round">♜</div><h2>PIANO <span>CLÁSSICO</span></h2><p>Explore a beleza da música clássica.</p><button class="gold-btn">›</button>
+    </div>
+    <div class="path-card" onclick="show('songs')" style="background-image:url('assets/backgrounds/bg_pop_stage.png')">
+      <div class="round">♪</div><h2>PIANO <span>POPULAR</span></h2><p>Toque as músicas que você ama.</p><button class="gold-btn">›</button>
+    </div>
+  </div>
+</section>
 
-<div class="content">
-<div class="header">
-<div class="title">Piano Clássico</div>
-<div class="subtitle">Progressão do iniciante ao avançado</div>
-</div>
+<section class="screen" id="learn" style="--bg:url('assets/backgrounds/bg_classical_room.png')">
+  <div class="topbar"><div class="icon-btn" onclick="show('home')">‹</div><div class="logo-mini"><div class="logo-mark">♬</div><div class="logo-text"><b>Mundo do Piano</b><span>WORLD KEY</span></div></div><div class="icon-btn">?</div></div>
+  <div class="hero"><div class="eyebrow">Lições e métodos cronológicos</div><h1>PIANO<br><span class="gold">CLÁSSICO</span></h1></div>
+  <div class="tabs"><div class="tab active">LIÇÕES</div><div class="tab">MÉTODOS</div></div>
+  <div class="section-title"><span>◷ Progressão cronológica</span></div>
+  <div class="lesson-card"><div class="thumb" style="background-image:url('assets/backgrounds/bg_extra_1.png')"></div><div class="lesson"><div class="level-row"><div class="num">1</div><div><h3>Iniciante</h3><p>Primeiros passos no piano. Notas, postura, mãos e ritmos básicos.</p><p class="method">Métodos: Hanon Preparatório, Leila Fletcher, Bastien</p><div class="bar"><div class="fill" style="width:0%"></div></div></div></div></div><div class="arrow">›</div></div>
+  <div class="lesson-card"><div class="thumb" style="background-image:url('assets/backgrounds/bg_extra_2.png')"></div><div class="lesson"><div class="level-row"><div class="num">2</div><div><h3>Elementar</h3><p>Leitura de partituras, escalas e exercícios para coordenação.</p><p class="method">Métodos: Beyer Op.101, Czerny Op.599</p><div class="bar"><div class="fill" style="width:0%"></div></div></div></div></div><div class="arrow">›</div></div>
+  <div class="lesson-card"><div class="thumb" style="background-image:url('assets/backgrounds/bg_classical_room.png')"></div><div class="lesson"><div class="level-row"><div class="num">3</div><div><h3>Intermediário</h3><p>Peças clássicas, dinâmica, fraseado e expressão musical.</p><p class="method">Métodos: Burgmüller Op.100, Bach Pequenos Prelúdios</p><div class="bar"><div class="fill" style="width:0%"></div></div></div></div></div><div class="arrow">›</div></div>
+  <div class="lesson-card"><div class="thumb" style="background-image:url('assets/backgrounds/bg_extra_3.png')"></div><div class="lesson"><div class="level-row"><div class="num">4</div><div><h3>Avançado</h3><p>Obras completas, técnica avançada e interpretação.</p><p class="method">Métodos: Czerny Op.299, Bach Invenções, Sonatinas</p><div class="bar"><div class="fill" style="width:0%"></div></div></div></div></div><div class="arrow">›</div></div>
+  <div class="lesson-card"><div class="thumb" style="background-image:url('assets/backgrounds/bg_extra.png')"></div><div class="lesson"><div class="level-row"><div class="num">5</div><div><h3>Aperfeiçoamento</h3><p>Estudos avançados e repertório virtuosístico.</p><p class="method">Métodos: Chopin, Beethoven, Liszt</p><div class="bar"><div class="fill" style="width:0%"></div></div></div></div></div><div class="arrow">›</div></div>
+  <div class="lesson-card cert"><div class="trophy">🏆</div><div class="lesson"><h3>Certificado de conclusão</h3><p>Conclua todas as lições para receber seu certificado de Pianista Clássico.</p></div><div class="arrow">›</div></div>
+</section>
 
-<div class="card">
-<div class="level">
-<div>
-<div class="level-title">Iniciante</div>
-<div class="subtitle">Postura, notas e ritmo</div>
-<div class="progress"><div class="progress-fill"></div></div>
-</div>
-</div>
-</div>
+<section class="screen" id="songs" style="--bg:url('assets/backgrounds/bg_pop_stage.png')">
+  <div class="topbar"><div class="icon-btn" onclick="show('home')">‹</div><div class="logo-mini"><div class="logo-mark">♬</div><div class="logo-text"><b>Mundo do Piano</b><span>WORLD KEY</span></div></div><div class="icon-btn">⌕</div></div>
+  <div class="hero"><h1>Músicas</h1><div class="subtitle">Encontre e aprenda suas músicas favoritas.</div></div>
+  <div class="chips"><div class="chip active">Todas</div><div class="chip">Pop</div><div class="chip">Rock</div><div class="chip">MPB</div><div class="chip">Clássica</div><div class="chip">Gospel</div></div>
+  <div class="section-title"><span>★ Em destaque</span><span>Ver todas ›</span></div>
+  <div class="song-feature">
+    <div class="song-card" style="--img:url('assets/backgrounds/bg_extra_1.png')"><h3>Perfect</h3><p>Ed Sheeran</p><span class="badge">Iniciante</span></div>
+    <div class="song-card" style="--img:url('assets/backgrounds/bg_extra_2.png')"><h3>A Thousand Years</h3><p>Christina Perri</p><span class="badge">Iniciante</span></div>
+    <div class="song-card" style="--img:url('assets/backgrounds/bg_extra_3.png')"><h3>Hallelujah</h3><p>Leonard Cohen</p><span class="badge">Intermediário</span></div>
+  </div>
+  <div class="section-title"><span>♫ Todas as músicas</span></div>
+  <div class="list-card"><div class="cover"></div><div><b>Blinding Lights</b><p class="subtitle">The Weeknd · Intermediário</p></div><div class="heart">♡</div></div>
+  <div class="list-card"><div class="cover"></div><div><b>Bohemian Rhapsody</b><p class="subtitle">Queen · Avançado</p></div><div class="heart">♡</div></div>
+  <div class="list-card"><div class="cover"></div><div><b>Garota de Ipanema</b><p class="subtitle">Tom Jobim · Intermediário</p></div><div class="heart">♡</div></div>
+  <div class="player"><div class="cover"></div><div><b>Perfect</b><p class="subtitle">Ed Sheeran</p></div><div class="play">▶</div></div>
+</section>
 
-<div class="card">
-<div class="level">
-<div>
-<div class="level-title">Elementar</div>
-<div class="subtitle">Leitura e coordenação</div>
-<div class="progress"><div class="progress-fill" style="width:10%"></div></div>
-</div>
-</div>
-</div>
+<section class="screen" id="progress" style="--bg:url('assets/backgrounds/bg_progress_stats.png')">
+  <div class="topbar"><div></div><div class="logo-mini"><div class="logo-mark">♬</div><div class="logo-text"><b>Mundo do Piano</b><span>WORLD KEY</span></div></div><div class="icon-btn">▣</div></div>
+  <div class="hero"><h1>Progresso</h1><div class="subtitle">Acompanhe sua evolução e celebre cada conquista.</div></div>
+  <div class="tabs"><div class="tab active">Visão Geral</div><div class="tab">Estatísticas</div><div class="tab">Conquistas</div></div>
+  <div class="stats-grid"><div class="stat-card"><div class="ring"><div>NÍVEL<br><b>12</b><br><span>320/500 XP</span></div></div></div><div class="stat-card"><p>Tempo de estudo</p><div class="big">25h 40m</div><br><p>Sequência</p><div class="big">7 dias</div></div></div>
+  <div class="card stat-card" style="margin-top:12px"><div class="section-title"><span>Atividade de estudos</span><span>Esta semana</span></div><div class="chart"><div style="height:58px"></div><div style="height:46px"></div><div style="height:74px"></div><div style="height:39px"></div><div style="height:63px"></div><div style="height:93px"></div><div style="height:35px"></div></div></div>
+  <div class="lesson-card cert"><div class="trophy">🎼</div><div class="lesson"><h3>Piano Clássico</h3><div class="bar"><div class="fill" style="width:68%"></div></div></div><div class="arrow">68%</div></div>
+  <div class="lesson-card cert"><div class="trophy">♪</div><div class="lesson"><h3>Piano Popular</h3><div class="bar"><div class="fill" style="width:72%"></div></div></div><div class="arrow">72%</div></div>
+</section>
 
-<div class="card">
-<div class="level">
-<div>
-<div class="level-title">Intermediário</div>
-<div class="subtitle">Expressão e dinâmica</div>
-<div class="progress"><div class="progress-fill" style="width:5%"></div></div>
-</div>
-</div>
-</div>
+<section class="screen" id="challenges" style="--bg:url('assets/backgrounds/bg_challenges_dark.png')">
+  <div class="topbar"><div class="icon-btn" onclick="show('home')">‹</div><div class="logo-mini"><div class="logo-mark">♬</div><div class="logo-text"><b>Mundo do Piano</b><span>WORLD KEY</span></div></div><div class="icon-btn">?</div></div>
+  <div class="hero"><h1>Desafios</h1><div class="subtitle">Desafie-se, pratique e conquiste recompensas incríveis!</div></div>
+  <div class="tabs"><div class="tab active">Disponíveis</div><div class="tab">Em andamento</div><div class="tab">Concluídos</div></div>
+  <div class="section-title"><span>◷ Desafios diários</span></div>
+  <div class="challenge"><div class="ico">♪</div><div><b>Aquecimento Diário</b><p class="subtitle">Toque qualquer música por 10 minutos.</p><div class="bar"><div class="fill" style="width:60%"></div></div></div><div class="reward">★ 50 XP<button class="cta">Continuar</button></div></div>
+  <div class="challenge"><div class="ico">♩</div><div><b>Precisão é Tudo</b><p class="subtitle">Toque 3 músicas no modo precisão.</p><div class="bar"><div class="fill" style="width:32%"></div></div></div><div class="reward">★ 75 XP<button class="cta">Continuar</button></div></div>
+  <div class="challenge"><div class="ico">🔥</div><div><b>Sequência Imbatível</b><p class="subtitle">Mantenha uma sequência de 7 dias.</p><div class="bar"><div class="fill" style="width:72%"></div></div></div><div class="reward">★ 100 XP<button class="cta">Continuar</button></div></div>
+</section>
 
+<section class="screen" id="profile" style="--bg:url('assets/backgrounds/bg_profile_piano.png')">
+  <div class="topbar"><div></div><div class="logo-mini"><div class="logo-mark">♬</div><div class="logo-text"><b>Mundo do Piano</b><span>WORLD KEY</span></div></div><div class="icon-btn">⚙</div></div>
+  <div class="hero"><h1>Meu Perfil</h1><div class="subtitle">A música transforma. Você evolui.</div></div>
+  <div class="profile-card"><div class="avatar">👤</div><div><h2 style="font-family:Georgia,serif;margin:0">Lucas Almeida</h2><p class="subtitle">Pianista em formação<br>São Paulo, Brasil</p></div><div style="text-align:center;color:var(--gold2)">♛<br><span class="big">12</span></div></div>
+  <div class="mini-stats"><div class="mini-stat"><b>25h</b><span>Estudo</span></div><div class="mini-stat"><b>7</b><span>Sequência</span></div><div class="mini-stat"><b>28</b><span>Desafios</span></div><div class="mini-stat"><b>1.250</b><span>XP</span></div></div>
+  <div class="section-title"><span>Minhas conquistas</span><span>Ver todas ›</span></div>
+  <div class="song-feature"><div class="stat-card" style="flex:0 0 132px;text-align:center">🛡<br><b>Sequência</b><p>7 dias</p></div><div class="stat-card" style="flex:0 0 132px;text-align:center">♪<br><b>Primeira Música</b><p>Concluída</p></div><div class="stat-card" style="flex:0 0 132px;text-align:center">★<br><b>Perfeccionista</b><p>100%</p></div></div>
+</section>
+
+<div class="build">v0.4.1_20260428_1429</div>
+<nav class="nav">
+  <button class="active" onclick="show('learn',this)"><span class="i">🎓</span>Aprender</button>
+  <button onclick="show('songs',this)"><span class="i">♫</span>Músicas</button>
+  <button onclick="show('progress',this)"><span class="i">▥</span>Progresso</button>
+  <button onclick="show('challenges',this)"><span class="i">★</span>Desafios</button>
+  <button onclick="show('profile',this)"><span class="i">◉</span>Perfil</button>
+</nav>
 </div>
-</div>
-
-<!-- SONGS -->
-<div id="songs" class="screen">
-<div class="bg"></div>
-<div class="content">
-
-<div class="header">
-<div class="title">Músicas</div>
-</div>
-
-<div class="card">Perfect — Iniciante</div>
-<div class="card">Someone Like You — Iniciante</div>
-<div class="card">Bohemian Rhapsody — Avançado</div>
-
-</div>
-
-<div class="player">
-<div class="player-card">
-<div>Perfect</div>
-<div class="play-btn">▶</div>
-</div>
-</div>
-
-</div>
-
-<!-- PROGRESS -->
-<div id="progress" class="screen">
-<div class="bg"></div>
-<div class="content">
-
-<div class="header">
-<div class="title">Progresso</div>
-</div>
-
-<div class="card">Nível 12</div>
-<div class="card">320 / 500 XP</div>
-<div class="card">Sequência 7 dias</div>
-
-</div>
-</div>
-
-<!-- NAV -->
-<div class="nav">
-<div onclick="show('learn')" class="active">Aprender</div>
-<div onclick="show('songs')">Músicas</div>
-<div onclick="show('progress')">Progresso</div>
-</div>
-
 <script>
-function show(id){
-document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-
-document.querySelectorAll('.nav div').forEach(n=>n.classList.remove('active'));
-event.target.classList.add('active');
+function show(id, el){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(el){
+    document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+    el.classList.add('active');
+  }
+  document.querySelector('.app-shell').scrollTop = 0;
 }
 </script>
-
 </body>
 </html>
