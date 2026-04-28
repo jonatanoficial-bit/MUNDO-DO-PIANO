@@ -52,6 +52,193 @@ h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:50px;line-heig
 .modal{display:none;position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.72);align-items:end;justify-content:center} .modal.active{display:flex} .modal-card{width:min(100vw,430px);background:rgba(12,12,12,.96);border:1px solid rgba(216,180,90,.35);border-radius:24px 24px 0 0;padding:20px;box-shadow:0 -20px 80px rgba(0,0,0,.55)} .modal-card h2{font-family:Georgia,serif;color:var(--gold2);margin:0 0 8px} .modal-card p{color:var(--muted);line-height:1.4} 
 .nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(100vw,430px);height:84px;padding:7px 10px calc(7px + env(safe-area-inset-bottom));background:rgba(8,8,8,.88);border-top:1px solid rgba(216,180,90,.18);display:flex;justify-content:space-around;align-items:center;z-index:50;backdrop-filter:blur(22px);border-radius:22px 22px 0 0} .nav button{border:0;background:transparent;color:rgba(255,255,255,.82);font-size:11px;display:grid;gap:4px;place-items:center;min-width:62px} .nav button .i{font-size:25px;line-height:1} .nav button.active{color:var(--gold2)} .build{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);width:min(100vw,430px);text-align:center;font-size:9px;color:rgba(255,255,255,.35);z-index:40;pointer-events:none}
 @media (min-width:700px){body{background:radial-gradient(circle at center,rgba(216,180,90,.16),#050505 55%)}.app-shell{border-left:1px solid rgba(216,180,90,.25);border-right:1px solid rgba(216,180,90,.25)}}
+
+/* v0.7.0 Piano Gameplay */
+.piano-game {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:120;
+  width:min(100vw,430px);
+  margin:0 auto;
+  left:50%;
+  transform:translateX(-50%);
+  background:#030303;
+  overflow:hidden;
+}
+.piano-game.active { display:block; }
+.piano-game::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url('assets/backgrounds/bg_pop_stage.png');
+  background-size:cover;
+  background-position:center;
+  filter:brightness(.55);
+  z-index:-2;
+}
+.piano-game::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.82) 55%,rgba(0,0,0,.96));
+  z-index:-1;
+}
+.game-head {
+  padding:max(28px, env(safe-area-inset-top)) 18px 10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.game-title b {
+  font-family:Georgia,serif;
+  font-size:24px;
+}
+.game-title span {
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+}
+.score-row {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  padding:0 18px;
+}
+.score-box {
+  background:rgba(0,0,0,.58);
+  border:1px solid rgba(216,180,90,.28);
+  border-radius:14px;
+  padding:10px;
+  text-align:center;
+  backdrop-filter:blur(12px);
+}
+.score-box b {
+  color:var(--gold2);
+  font-family:Georgia,serif;
+  font-size:22px;
+}
+.score-box span {
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+}
+.lane {
+  position:absolute;
+  left:18px;
+  right:18px;
+  top:155px;
+  bottom:205px;
+  border:1px solid rgba(216,180,90,.16);
+  border-radius:20px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(0,0,0,.18));
+  overflow:hidden;
+}
+.hit-line {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:18px;
+  height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold2),transparent);
+  box-shadow:0 0 22px rgba(216,180,90,.8);
+}
+.falling-note {
+  position:absolute;
+  width:42px;
+  height:18px;
+  border-radius:999px;
+  background:linear-gradient(#f7dc8c,#b77c22);
+  box-shadow:0 0 16px rgba(216,180,90,.7);
+  top:-26px;
+  transition:top .08s linear;
+}
+.feedback {
+  position:absolute;
+  left:0;
+  right:0;
+  top:48%;
+  text-align:center;
+  font-family:Georgia,serif;
+  font-size:42px;
+  color:var(--gold2);
+  text-shadow:0 0 26px rgba(216,180,90,.85);
+  opacity:0;
+  pointer-events:none;
+}
+.feedback.show {
+  animation:popFeedback .7s ease;
+}
+@keyframes popFeedback {
+  0%{transform:scale(.8);opacity:0}
+  20%{transform:scale(1.08);opacity:1}
+  100%{transform:scale(1);opacity:0}
+}
+.keyboard {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:190px;
+  padding:12px 10px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(0,0,0,.82);
+  border-top:1px solid rgba(216,180,90,.25);
+}
+.keys {
+  position:relative;
+  height:100%;
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  gap:3px;
+}
+.white-key {
+  border:0;
+  border-radius:0 0 10px 10px;
+  background:linear-gradient(#fff,#d8d8d8);
+  color:#111;
+  font-weight:700;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding-bottom:12px;
+  box-shadow:inset 0 -8px 14px rgba(0,0,0,.18);
+}
+.white-key:active,.white-key.hit {
+  background:linear-gradient(#f8d982,#fff4c5);
+  transform:translateY(2px);
+}
+.black-key {
+  position:absolute;
+  top:0;
+  width:8.5%;
+  height:58%;
+  border:0;
+  border-radius:0 0 8px 8px;
+  background:linear-gradient(#222,#000);
+  color:#f4d67e;
+  z-index:3;
+  box-shadow:0 4px 12px rgba(0,0,0,.6);
+  font-size:10px;
+  padding-top:54px;
+}
+.black-key:active,.black-key.hit {
+  background:linear-gradient(#7c5a1e,#111);
+}
+.game-actions {
+  padding:10px 18px;
+  display:flex;
+  gap:10px;
+}
+.game-actions .pill-btn {
+  flex:1;
+  text-align:center;
+}
+
+
+.admin-panel{padding:14px;margin-bottom:12px}
+.admin-panel h3{font-family:Georgia,serif;color:var(--gold2);margin:0 0 8px}
+.codebox{background:rgba(0,0,0,.55);border:1px solid rgba(216,180,90,.18);border-radius:12px;padding:10px;color:rgba(255,255,255,.78);font-size:12px;line-height:1.45;overflow:auto}
+
 </style>
 </head>
 <body>
@@ -119,7 +306,7 @@ h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:50px;line-heig
 </section>
 
 <section class="screen" id="profile" style="--bg:url('assets/backgrounds/bg_profile_piano.png')">
-  <div class="topbar"><div></div><div class="logo-mini"><div class="logo-mark">♬</div><div class="logo-text"><b>Mundo do Piano</b><span>WORLD KEY</span></div></div><div class="icon-btn">⚙</div></div>
+  <div class="topbar"><div></div><div class="logo-mini"><div class="logo-mark">♬</div><div class="logo-text"><b>Mundo do Piano</b><span>WORLD KEY</span></div></div><div class="icon-btn" onclick="show('admin')">⚙</div></div>
   <div class="hero"><h1>Meu Perfil</h1><div class="subtitle">A música transforma. Você evolui.</div></div>
   <div class="profile-card"><div class="avatar">👤</div><div><h2 style="font-family:Georgia,serif;margin:0">Lucas Almeida</h2><p class="subtitle">Pianista em formação<br>São Paulo, Brasil</p></div><div style="text-align:center;color:var(--gold2)">♛<br><span class="big" id="profileLevel">1</span></div></div>
   <div class="mini-stats"><div class="mini-stat"><b>25h</b><span>Estudo</span></div><div class="mini-stat"><b>7</b><span>Sequência</span></div><div class="mini-stat"><b>28</b><span>Desafios</span></div><div class="mini-stat"><b id="profileXp">0</b><span>XP</span></div></div>
@@ -127,7 +314,31 @@ h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:50px;line-heig
   <div id="recentActivity"></div>
 </section>
 
-<div class="build">v0.5.0_20260428_1443</div>
+
+<section class="screen" id="admin" style="--bg:url('assets/backgrounds/bg_profile_piano.png')">
+  <div class="topbar">
+    <div class="icon-btn" onclick="show('home')">‹</div>
+    <div class="logo-mini"><div class="logo-mark">♬</div><div class="logo-text"><b>Mundo do Piano</b><span>WORLD KEY</span></div></div>
+    <div class="icon-btn">⚙</div>
+  </div>
+  <div class="hero"><h1>Admin</h1><div class="subtitle">Guia interno para alimentar PDFs, músicas e capas.</div></div>
+  <div class="admin-panel glass">
+    <h3>Adicionar PDFs</h3>
+    <p class="subtitle">Coloque os PDFs em /lessons/nome_do_modulo/ e atualize o caminho no arquivo /data/curriculum_v050.json.</p>
+    <div class="codebox">"pdf": "lessons/iniciante/aula_01_postura.pdf"</div>
+  </div>
+  <div class="admin-panel glass">
+    <h3>Adicionar músicas</h3>
+    <p class="subtitle">Coloque áudio em /music/, capa em /assets/covers/ e cadastre em /data/songs.json.</p>
+    <div class="codebox">{"id":"minha_musica","title":"Minha Música","artist":"Artista","level":"Iniciante","category":"Gospel","cover":"assets/covers/minha_capa.png","audio":"music/minha_musica.mp3","enabled":true}</div>
+  </div>
+  <div class="admin-panel glass">
+    <h3>Arquivo completo</h3>
+    <p class="subtitle">Também incluí o arquivo /admin/GUIA_ADMIN.txt no ZIP com instruções detalhadas.</p>
+  </div>
+</section>
+
+<div class="build">v0.8.0_20260428_1527</div>
 <nav class="nav">
   <button id="navLearn" class="active" onclick="show('learn',this)"><span class="i">🎓</span>Aprender</button>
   <button id="navSongs" onclick="show('songs',this)"><span class="i">♫</span>Músicas</button>
@@ -135,6 +346,48 @@ h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:50px;line-heig
   <button onclick="show('challenges',this)"><span class="i">★</span>Desafios</button>
   <button onclick="show('profile',this)"><span class="i">◉</span>Perfil</button>
 </nav>
+</div>
+
+
+<div class="piano-game" id="pianoGame">
+  <div class="game-head">
+    <div class="icon-btn" onclick="closeGame()">‹</div>
+    <div class="game-title">
+      <b id="gameSongTitle">Aula prática</b>
+      <span>Toque as notas quando chegarem à linha dourada</span>
+    </div>
+    <div class="icon-btn" onclick="resetGame()">↻</div>
+  </div>
+  <div class="score-row">
+    <div class="score-box"><b id="gameScore">0</b><span>Score</span></div>
+    <div class="score-box"><b id="gameCombo">0x</b><span>Combo</span></div>
+    <div class="score-box"><b id="gameAcc">100%</b><span>Precisão</span></div>
+  </div>
+  <div class="game-actions">
+    <button class="pill-btn primary" onclick="startGame()">Iniciar</button>
+    <button class="pill-btn" onclick="stopGame()">Pausar</button>
+  </div>
+  <div class="lane" id="lane">
+    <div class="hit-line"></div>
+  </div>
+  <div class="feedback" id="feedback">Perfect</div>
+  <div class="keyboard">
+    <div class="keys">
+      <button class="white-key" onclick="pressKey('C',this)">Dó</button>
+      <button class="white-key" onclick="pressKey('D',this)">Ré</button>
+      <button class="white-key" onclick="pressKey('E',this)">Mi</button>
+      <button class="white-key" onclick="pressKey('F',this)">Fá</button>
+      <button class="white-key" onclick="pressKey('G',this)">Sol</button>
+      <button class="white-key" onclick="pressKey('A',this)">Lá</button>
+      <button class="white-key" onclick="pressKey('B',this)">Si</button>
+      <button class="white-key" onclick="pressKey('C2',this)">Dó</button>
+      <button class="black-key" style="left:8.5%" onclick="pressKey('CS',this)">Dó#</button>
+      <button class="black-key" style="left:21%" onclick="pressKey('DS',this)">Ré#</button>
+      <button class="black-key" style="left:46%" onclick="pressKey('FS',this)">Fá#</button>
+      <button class="black-key" style="left:58.5%" onclick="pressKey('GS',this)">Sol#</button>
+      <button class="black-key" style="left:71%" onclick="pressKey('AS',this)">Lá#</button>
+    </div>
+  </div>
 </div>
 
 <div class="modal" id="modal" onclick="closeModal(event)">
@@ -264,8 +517,148 @@ function renderProgress(){
 function renderAll(){ renderModules(); renderProgress(); }
 renderAll();
 
+
+
+
+let gameRunning = false;
+let gameTimer = null;
+let noteTimer = null;
+let activeNotes = [];
+let gameScore = 0;
+let gameCombo = 0;
+let gameHits = 0;
+let gameMiss = 0;
+const noteNames = ['C','D','E','F','G','A','B','C2'];
+const noteToX = {C:4,D:16,E:28,F:40,G:52,A:64,B:76,C2:88};
+
 function playLesson(title){
-  alert("Simulação de execução: " + title + "\n\n(Próxima fase: engine real de piano)");
+  document.getElementById('gameSongTitle').innerText = title || 'Aula prática';
+  document.getElementById('pianoGame').classList.add('active');
+  resetGame();
+  startGame();
+}
+
+function closeGame(){
+  stopGame();
+  document.getElementById('pianoGame').classList.remove('active');
+}
+
+function resetGame(){
+  gameScore = 0; gameCombo = 0; gameHits = 0; gameMiss = 0;
+  activeNotes.forEach(n => n.el.remove());
+  activeNotes = [];
+  updateGameHud();
+  document.getElementById('lane').querySelectorAll('.falling-note').forEach(n=>n.remove());
+}
+
+function startGame(){
+  gameRunning = true;
+  stopGame(false);
+  gameTimer = setInterval(tickNotes, 90);
+  noteTimer = setInterval(spawnNote, 720);
+}
+
+function stopGame(clear=true){
+  if(gameTimer) clearInterval(gameTimer);
+  if(noteTimer) clearInterval(noteTimer);
+  gameTimer = null; noteTimer = null;
+  if(clear) gameRunning = false;
+}
+
+function spawnNote(){
+  if(!gameRunning) return;
+  const lane = document.getElementById('lane');
+  const note = noteNames[Math.floor(Math.random()*noteNames.length)];
+  const el = document.createElement('div');
+  el.className = 'falling-note';
+  el.dataset.note = note;
+  el.style.left = `calc(${noteToX[note]}% - 21px)`;
+  lane.appendChild(el);
+  activeNotes.push({note, el, y:-26});
+}
+
+function tickNotes(){
+  const lane = document.getElementById('lane');
+  const h = lane.clientHeight;
+  activeNotes.forEach(obj=>{
+    obj.y += 13;
+    obj.el.style.top = obj.y + 'px';
+  });
+  const missed = activeNotes.filter(obj=>obj.y > h - 5);
+  if(missed.length){
+    missed.forEach(obj=>obj.el.remove());
+    activeNotes = activeNotes.filter(obj=>!missed.includes(obj));
+    gameCombo = 0;
+    gameMiss += missed.length;
+    showFeedback('Miss');
+    updateGameHud();
+  }
+}
+
+function pressKey(note, btn){
+  if(btn){
+    btn.classList.add('hit');
+    setTimeout(()=>btn.classList.remove('hit'),120);
+  }
+  playTone(note);
+  const lane = document.getElementById('lane');
+  const h = lane.clientHeight;
+  const target = h - 44;
+  let best = null;
+  let bestDist = 9999;
+  activeNotes.forEach(obj=>{
+    if(obj.note === note){
+      const dist = Math.abs(obj.y - target);
+      if(dist < bestDist){ best = obj; bestDist = dist; }
+    }
+  });
+  if(best && bestDist < 70){
+    best.el.remove();
+    activeNotes = activeNotes.filter(obj=>obj!==best);
+    let label = bestDist < 25 ? 'Perfect' : 'Good';
+    let pts = bestDist < 25 ? 100 : 60;
+    gameCombo++;
+    gameHits++;
+    gameScore += pts + Math.min(gameCombo*5, 100);
+    showFeedback(label);
+  } else {
+    gameCombo = 0;
+    gameMiss++;
+    showFeedback('Miss');
+  }
+  updateGameHud();
+}
+
+function updateGameHud(){
+  document.getElementById('gameScore').innerText = gameScore;
+  document.getElementById('gameCombo').innerText = gameCombo + 'x';
+  const total = gameHits + gameMiss;
+  const acc = total ? Math.round((gameHits/total)*100) : 100;
+  document.getElementById('gameAcc').innerText = acc + '%';
+}
+
+function showFeedback(text){
+  const fb = document.getElementById('feedback');
+  fb.innerText = text;
+  fb.classList.remove('show');
+  void fb.offsetWidth;
+  fb.classList.add('show');
+}
+
+function playTone(note){
+  const freqMap = {C:261.63,D:293.66,E:329.63,F:349.23,G:392,A:440,B:493.88,C2:523.25,CS:277.18,DS:311.13,FS:369.99,GS:415.3,AS:466.16};
+  try{
+    const ctx = window.audioCtx || (window.audioCtx = new (window.AudioContext || window.webkitAudioContext)());
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freqMap[note] || 440;
+    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.25, ctx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.45);
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.start(); osc.stop(ctx.currentTime + 0.48);
+  }catch(e){}
 }
 
 </script>

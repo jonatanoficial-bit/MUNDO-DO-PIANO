@@ -1,0 +1,34 @@
+{
+  "songs": [
+    {
+      "id": "perfect",
+      "title": "Perfect",
+      "artist": "Ed Sheeran",
+      "level": "Iniciante",
+      "category": "Pop",
+      "cover": "assets/covers/cover_placeholder_1.png",
+      "audio": "music/perfect.mp3",
+      "enabled": true
+    },
+    {
+      "id": "someone_like_you",
+      "title": "Someone Like You",
+      "artist": "Adele",
+      "level": "Iniciante",
+      "category": "Pop",
+      "cover": "assets/covers/cover_placeholder_2.png",
+      "audio": "music/someone_like_you.mp3",
+      "enabled": true
+    },
+    {
+      "id": "garota_ipanema",
+      "title": "Garota de Ipanema",
+      "artist": "Tom Jobim",
+      "level": "Intermediário",
+      "category": "MPB",
+      "cover": "assets/covers/cover_placeholder_3.png",
+      "audio": "music/garota_ipanema.mp3",
+      "enabled": true
+    }
+  ]
+}
