@@ -1,135 +1,250 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mundo do Piano</title>
+
 <style>
-body {margin:0;font-family:Arial;background:#000;color:#fff;}
-.screen {
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:#000;
+  color:#fff;
+  overflow:hidden;
+}
+
+/* SCREEN SYSTEM */
+.screen{
   position:fixed;
   width:100%;
   height:100vh;
-  background-size:cover;
-  background-position:center;
   display:none;
   padding:20px;
 }
-.active {display:block;}
 
-.overlay {
-  background:rgba(0,0,0,0.6);
-  padding:15px;
-  border-radius:12px;
-  margin-top:80px;
+.screen.active{
+  display:block;
 }
 
-.card {
-  border:1px solid rgba(212,175,55,0.4);
-  border-radius:12px;
-  padding:12px;
-  margin-bottom:10px;
+/* BACKGROUND (cinematic) */
+.bg{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.9)),
+             radial-gradient(circle at 50% 20%, rgba(212,175,55,0.2), transparent 60%);
+  z-index:0;
 }
 
-.title {font-size:22px;margin-bottom:10px;}
+/* CONTENT */
+.content{
+  position:relative;
+  z-index:2;
+}
 
-.nav {
+/* HEADER */
+.header{
+  margin-top:40px;
+  margin-bottom:20px;
+}
+
+.title{
+  font-size:32px;
+  font-weight:600;
+}
+
+.subtitle{
+  font-size:14px;
+  opacity:0.7;
+}
+
+/* GLASS CARD */
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(212,175,55,0.3);
+  backdrop-filter:blur(10px);
+  border-radius:18px;
+  padding:16px;
+  margin-bottom:12px;
+}
+
+/* LEVEL CARD */
+.level{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.level-title{
+  font-size:18px;
+}
+
+.progress{
+  height:6px;
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+  margin-top:8px;
+}
+
+.progress-fill{
+  height:100%;
+  width:30%;
+  background:#D4AF37;
+  border-radius:10px;
+}
+
+/* NAV */
+.nav{
   position:fixed;
   bottom:0;
   width:100%;
-  height:70px;
-  background:rgba(0,0,0,0.9);
+  height:80px;
+  background:rgba(0,0,0,0.8);
+  backdrop-filter:blur(20px);
   display:flex;
   justify-content:space-around;
   align-items:center;
-  border-top:1px solid rgba(212,175,55,0.4);
+  border-top:1px solid rgba(212,175,55,0.2);
 }
 
-.nav button {
-  background:none;
-  border:none;
+.nav div{
+  text-align:center;
+  font-size:11px;
+  opacity:0.6;
+}
+
+.nav .active{
   color:#D4AF37;
-  font-size:12px;
+  opacity:1;
+}
+
+/* PLAYER BAR */
+.player{
+  position:fixed;
+  bottom:80px;
+  width:100%;
+  padding:10px 20px;
+}
+
+.player-card{
+  background:rgba(0,0,0,0.7);
+  border-radius:14px;
+  padding:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.play-btn{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:2px solid #D4AF37;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 </style>
 </head>
+
 <body>
 
-<div id="learn" class="screen active" style="background-image:url('assets/backgrounds/bg_classical_room.png')">
-  <div class="overlay">
-    <div class="title">Piano Clássico</div>
+<!-- LEARN SCREEN -->
+<div id="learn" class="screen active">
+<div class="bg"></div>
 
-    <div class="card">
-      <b>Iniciante</b><br>
-      Método: Hanon + Czerny básico<br>
-      Conteúdo: postura, notas, ritmo simples
-    </div>
-
-    <div class="card">
-      <b>Elementar</b><br>
-      Método: Beyer / Czerny Op.599<br>
-      Conteúdo: leitura de partitura, coordenação
-    </div>
-
-    <div class="card">
-      <b>Intermediário</b><br>
-      Método: Burgmüller / Bach Invenções<br>
-      Conteúdo: expressão, dinâmica
-    </div>
-
-    <div class="card">
-      <b>Avançado</b><br>
-      Método: Chopin / Beethoven / Liszt<br>
-      Conteúdo: técnica avançada e interpretação
-    </div>
-  </div>
+<div class="content">
+<div class="header">
+<div class="title">Piano Clássico</div>
+<div class="subtitle">Progressão do iniciante ao avançado</div>
 </div>
 
-<div id="songs" class="screen" style="background-image:url('assets/backgrounds/bg_pop_stage.png')">
-  <div class="overlay">
-    <div class="title">Músicas</div>
-    <div class="card">Perfect - Iniciante</div>
-    <div class="card">Someone Like You - Iniciante</div>
-    <div class="card">Bohemian Rhapsody - Avançado</div>
-  </div>
+<div class="card">
+<div class="level">
+<div>
+<div class="level-title">Iniciante</div>
+<div class="subtitle">Postura, notas e ritmo</div>
+<div class="progress"><div class="progress-fill"></div></div>
+</div>
+</div>
 </div>
 
-<div id="progress" class="screen" style="background-image:url('assets/backgrounds/bg_progress_stats.png')">
-  <div class="overlay">
-    <div class="title">Progresso</div>
-    <div class="card">Nível: 12</div>
-    <div class="card">XP: 320 / 500</div>
-    <div class="card">Sequência: 7 dias</div>
-  </div>
+<div class="card">
+<div class="level">
+<div>
+<div class="level-title">Elementar</div>
+<div class="subtitle">Leitura e coordenação</div>
+<div class="progress"><div class="progress-fill" style="width:10%"></div></div>
+</div>
+</div>
 </div>
 
-<div id="challenges" class="screen" style="background-image:url('assets/backgrounds/bg_challenges_dark.png')">
-  <div class="overlay">
-    <div class="title">Desafios</div>
-    <div class="card">Toque 10 minutos</div>
-    <div class="card">Complete 3 músicas</div>
-  </div>
+<div class="card">
+<div class="level">
+<div>
+<div class="level-title">Intermediário</div>
+<div class="subtitle">Expressão e dinâmica</div>
+<div class="progress"><div class="progress-fill" style="width:5%"></div></div>
+</div>
+</div>
 </div>
 
-<div id="profile" class="screen" style="background-image:url('assets/backgrounds/bg_profile_piano.png')">
-  <div class="overlay">
-    <div class="title">Perfil</div>
-    <div class="card">Lucas Almeida</div>
-    <div class="card">Tempo de estudo: 25h</div>
-  </div>
+</div>
 </div>
 
+<!-- SONGS -->
+<div id="songs" class="screen">
+<div class="bg"></div>
+<div class="content">
+
+<div class="header">
+<div class="title">Músicas</div>
+</div>
+
+<div class="card">Perfect — Iniciante</div>
+<div class="card">Someone Like You — Iniciante</div>
+<div class="card">Bohemian Rhapsody — Avançado</div>
+
+</div>
+
+<div class="player">
+<div class="player-card">
+<div>Perfect</div>
+<div class="play-btn">▶</div>
+</div>
+</div>
+
+</div>
+
+<!-- PROGRESS -->
+<div id="progress" class="screen">
+<div class="bg"></div>
+<div class="content">
+
+<div class="header">
+<div class="title">Progresso</div>
+</div>
+
+<div class="card">Nível 12</div>
+<div class="card">320 / 500 XP</div>
+<div class="card">Sequência 7 dias</div>
+
+</div>
+</div>
+
+<!-- NAV -->
 <div class="nav">
-<button onclick="show('learn')">Aprender</button>
-<button onclick="show('songs')">Músicas</button>
-<button onclick="show('progress')">Progresso</button>
-<button onclick="show('challenges')">Desafios</button>
-<button onclick="show('profile')">Perfil</button>
+<div onclick="show('learn')" class="active">Aprender</div>
+<div onclick="show('songs')">Músicas</div>
+<div onclick="show('progress')">Progresso</div>
 </div>
 
 <script>
 function show(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+
+document.querySelectorAll('.nav div').forEach(n=>n.classList.remove('active'));
+event.target.classList.add('active');
 }
 </script>
 
