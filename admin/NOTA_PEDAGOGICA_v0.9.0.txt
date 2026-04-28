@@ -1,0 +1,5 @@
+ATUALIZAÇÃO v0.9.0
+
+O modo de piano estilo Guitar Hero/Synthesia foi separado em uma aba chamada BRINCAR.
+As lições sérias continuam em APRENDER e seguem cronologia pedagógica tradicional.
+Não misturar exercícios de postura/leitura com jogo rhythm, para preservar a credibilidade educacional.

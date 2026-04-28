@@ -239,6 +239,22 @@ h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:50px;line-heig
 .admin-panel h3{font-family:Georgia,serif;color:var(--gold2);margin:0 0 8px}
 .codebox{background:rgba(0,0,0,.55);border:1px solid rgba(216,180,90,.18);border-radius:12px;padding:10px;color:rgba(255,255,255,.78);font-size:12px;line-height:1.45;overflow:auto}
 
+
+/* v0.9.0 Espaço Brincar / Descontrair */
+.play-hero-card{
+  min-height:240px;border-radius:28px;border:1px solid rgba(216,180,90,.34);
+  background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.82)),url('assets/backgrounds/bg_pop_stage.png');
+  background-size:cover;background-position:center;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;
+  box-shadow:inset 0 -120px 90px rgba(0,0,0,.82),0 20px 44px rgba(0,0,0,.30);
+}
+.play-hero-card h2{margin:0;font-family:Georgia,serif;font-size:34px;color:var(--gold2)}
+.play-hero-card p{margin:8px 0 14px;color:rgba(255,255,255,.78);line-height:1.35}
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.mode-card{min-height:150px;padding:14px;border-radius:20px;border:1px solid rgba(216,180,90,.24);background:rgba(12,12,12,.78);backdrop-filter:blur(14px)}
+.mode-card .mode-icon{width:50px;height:50px;border-radius:50%;border:1px solid rgba(216,180,90,.62);display:grid;place-items:center;color:var(--gold2);font-size:26px;margin-bottom:18px}
+.mode-card h3{margin:0;font-family:Georgia,serif;color:#fff}
+.mode-card p{font-size:12px;color:var(--muted);line-height:1.35}
+
 </style>
 </head>
 <body>
@@ -315,6 +331,39 @@ h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:50px;line-heig
 </section>
 
 
+
+<section class="screen" id="playzone" style="--bg:url('assets/backgrounds/bg_pop_stage.png')">
+  <div class="topbar">
+    <div class="icon-btn" onclick="show('home')">‹</div>
+    <div class="logo-mini"><div class="logo-mark">♬</div><div class="logo-text"><b>Mundo do Piano</b><span>WORLD KEY</span></div></div>
+    <div class="icon-btn" onclick="openModal('Espaço de descompressão', 'Esta aba é separada da formação pedagógica. Aqui o aluno brinca, treina reflexo, ritmo e ouvido sem confundir com as lições sérias.')">?</div>
+  </div>
+  <div class="hero">
+    <div class="eyebrow">Treino leve e diversão</div>
+    <h1>Brincar<br><span class="gold">no Piano</span></h1>
+    <div class="subtitle">Um espaço separado para se divertir, treinar ritmo e ganhar agilidade sem quebrar a cronologia pedagógica principal.</div>
+  </div>
+
+  <div class="play-hero-card">
+    <h2>Modo Rhythm</h2>
+    <p>Notas caindo estilo Guitar Hero/Synthesia. Toque no tempo certo e tente fazer combo.</p>
+    <button class="pill-btn primary" onclick="playLesson('Modo Rhythm Livre')">Jogar agora</button>
+  </div>
+
+  <div class="section-title"><span>Modos de prática livre</span></div>
+  <div class="mode-grid">
+    <div class="mode-card" onclick="playLesson('Treino de Reflexo')"><div class="mode-icon">⚡</div><h3>Reflexo</h3><p>Notas rápidas para treinar tempo de resposta.</p></div>
+    <div class="mode-card" onclick="playLesson('Treino de Ritmo')"><div class="mode-icon">♩</div><h3>Ritmo</h3><p>Foco em tempo, pulso e regularidade.</p></div>
+    <div class="mode-card" onclick="playLesson('Treino de Ouvido')"><div class="mode-icon">👂</div><h3>Ouvido</h3><p>Reconheça notas e padrões melódicos.</p></div>
+    <div class="mode-card" onclick="playLesson('Desafio Livre')"><div class="mode-icon">★</div><h3>Desafio</h3><p>Jogue sem compromisso e tente bater score.</p></div>
+  </div>
+
+  <div class="admin-panel glass" style="margin-top:14px">
+    <h3>Importante</h3>
+    <p class="subtitle">O modo Brincar não substitui as lições. Ele serve para engajamento, coordenação, ritmo e motivação.</p>
+  </div>
+</section>
+
 <section class="screen" id="admin" style="--bg:url('assets/backgrounds/bg_profile_piano.png')">
   <div class="topbar">
     <div class="icon-btn" onclick="show('home')">‹</div>
@@ -338,12 +387,12 @@ h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:50px;line-heig
   </div>
 </section>
 
-<div class="build">v0.8.0_20260428_1527</div>
+<div class="build">v0.9.0_20260428_1632</div>
 <nav class="nav">
   <button id="navLearn" class="active" onclick="show('learn',this)"><span class="i">🎓</span>Aprender</button>
   <button id="navSongs" onclick="show('songs',this)"><span class="i">♫</span>Músicas</button>
+  <button id="navPlay" onclick="show('playzone',this)"><span class="i">🎮</span>Brincar</button>
   <button onclick="show('progress',this)"><span class="i">▥</span>Progresso</button>
-  <button onclick="show('challenges',this)"><span class="i">★</span>Desafios</button>
   <button onclick="show('profile',this)"><span class="i">◉</span>Perfil</button>
 </nav>
 </div>
@@ -462,7 +511,7 @@ function openModule(id){
           <small>+${l.xp} XP · Material: ${l.pdf}</small>
           <div class="unit-actions">
             <button class="pill-btn primary" onclick="completeLesson('${l.id}')">${progress[l.id]?'Concluída ✓':'Marcar como concluída'}</button>
-            <button class="pill-btn" onclick="playLesson('${l.pdf}')">Tocar aula</button>
+            <button class="pill-btn" onclick="openPdf('${l.pdf}')">Abrir material</button>
           </div>
         </div>
         <div class="arrow">${progress[l.id]?'✓':'›'}</div>
@@ -484,6 +533,14 @@ function completeLesson(id){
 
 function playLesson(path){
   openModal('Material da lição', 'Nesta build a estrutura de PDF já está pronta. Substitua o arquivo placeholder em ' + path + ' pelo PDF real do método. Depois vamos abrir o PDF dentro do app.');
+}
+
+function openPdf(path){
+  if(path && path.toLowerCase().endsWith('.pdf')){
+    window.open(path, '_blank');
+  } else {
+    openModal('Material da lição', 'PDF ainda não inserido. Coloque o arquivo real no caminho: ' + path);
+  }
 }
 
 function openModal(title, text){

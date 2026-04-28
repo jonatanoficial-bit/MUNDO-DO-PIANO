@@ -32,3 +32,12 @@ v0.8.0:
 - Arquivo /data/songs.json criado para cadastrar músicas.
 - Botão Abrir material agora tenta abrir PDF real em nova aba.
 Build: v0.8.0_20260428_1527
+
+
+v0.9.0:
+- Separação conceitual correta: Aprender = formação séria; Brincar = modo descontração.
+- Botão de gameplay removido das lições pedagógicas.
+- Nova aba "Brincar" com modo Rhythm livre.
+- Lições voltam a usar Abrir material / Marcar como concluída.
+- Bottom nav reorganizado para mobile.
+Build: v0.9.0_20260428_1632
