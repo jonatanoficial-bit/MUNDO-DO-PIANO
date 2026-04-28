@@ -12,9 +12,26 @@ body {margin:0;font-family:Arial;background:#000;color:#fff;}
   background-size:cover;
   background-position:center;
   display:none;
-  transition:opacity 0.3s ease;
+  padding:20px;
 }
 .active {display:block;}
+
+.overlay {
+  background:rgba(0,0,0,0.6);
+  padding:15px;
+  border-radius:12px;
+  margin-top:80px;
+}
+
+.card {
+  border:1px solid rgba(212,175,55,0.4);
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:10px;
+}
+
+.title {font-size:22px;margin-bottom:10px;}
+
 .nav {
   position:fixed;
   bottom:0;
@@ -26,6 +43,7 @@ body {margin:0;font-family:Arial;background:#000;color:#fff;}
   align-items:center;
   border-top:1px solid rgba(212,175,55,0.4);
 }
+
 .nav button {
   background:none;
   border:none;
@@ -36,15 +54,71 @@ body {margin:0;font-family:Arial;background:#000;color:#fff;}
 </head>
 <body>
 
-<div id="home" class="screen active" style="background-image:url('assets/backgrounds/bg_home_piano_dark.png')"></div>
-<div id="learn" class="screen" style="background-image:url('assets/backgrounds/bg_classical_room.png')"></div>
-<div id="songs" class="screen" style="background-image:url('assets/backgrounds/bg_pop_stage.png')"></div>
-<div id="progress" class="screen" style="background-image:url('assets/backgrounds/bg_progress_stats.png')"></div>
-<div id="challenges" class="screen" style="background-image:url('assets/backgrounds/bg_challenges_dark.png')"></div>
-<div id="profile" class="screen" style="background-image:url('assets/backgrounds/bg_profile_piano.png')"></div>
+<div id="learn" class="screen active" style="background-image:url('assets/backgrounds/bg_classical_room.png')">
+  <div class="overlay">
+    <div class="title">Piano Clássico</div>
+
+    <div class="card">
+      <b>Iniciante</b><br>
+      Método: Hanon + Czerny básico<br>
+      Conteúdo: postura, notas, ritmo simples
+    </div>
+
+    <div class="card">
+      <b>Elementar</b><br>
+      Método: Beyer / Czerny Op.599<br>
+      Conteúdo: leitura de partitura, coordenação
+    </div>
+
+    <div class="card">
+      <b>Intermediário</b><br>
+      Método: Burgmüller / Bach Invenções<br>
+      Conteúdo: expressão, dinâmica
+    </div>
+
+    <div class="card">
+      <b>Avançado</b><br>
+      Método: Chopin / Beethoven / Liszt<br>
+      Conteúdo: técnica avançada e interpretação
+    </div>
+  </div>
+</div>
+
+<div id="songs" class="screen" style="background-image:url('assets/backgrounds/bg_pop_stage.png')">
+  <div class="overlay">
+    <div class="title">Músicas</div>
+    <div class="card">Perfect - Iniciante</div>
+    <div class="card">Someone Like You - Iniciante</div>
+    <div class="card">Bohemian Rhapsody - Avançado</div>
+  </div>
+</div>
+
+<div id="progress" class="screen" style="background-image:url('assets/backgrounds/bg_progress_stats.png')">
+  <div class="overlay">
+    <div class="title">Progresso</div>
+    <div class="card">Nível: 12</div>
+    <div class="card">XP: 320 / 500</div>
+    <div class="card">Sequência: 7 dias</div>
+  </div>
+</div>
+
+<div id="challenges" class="screen" style="background-image:url('assets/backgrounds/bg_challenges_dark.png')">
+  <div class="overlay">
+    <div class="title">Desafios</div>
+    <div class="card">Toque 10 minutos</div>
+    <div class="card">Complete 3 músicas</div>
+  </div>
+</div>
+
+<div id="profile" class="screen" style="background-image:url('assets/backgrounds/bg_profile_piano.png')">
+  <div class="overlay">
+    <div class="title">Perfil</div>
+    <div class="card">Lucas Almeida</div>
+    <div class="card">Tempo de estudo: 25h</div>
+  </div>
+</div>
 
 <div class="nav">
-<button onclick="show('home')">Home</button>
 <button onclick="show('learn')">Aprender</button>
 <button onclick="show('songs')">Músicas</button>
 <button onclick="show('progress')">Progresso</button>
