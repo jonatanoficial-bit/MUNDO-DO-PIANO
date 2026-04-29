@@ -255,6 +255,15 @@ h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:50px;line-heig
 .mode-card h3{margin:0;font-family:Georgia,serif;color:#fff}
 .mode-card p{font-size:12px;color:var(--muted);line-height:1.35}
 
+
+/* v1.0.0 Piano Popular */
+.track-switch{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 16px}
+.track-btn{border:1px solid rgba(216,180,90,.35);background:rgba(0,0,0,.44);color:rgba(255,255,255,.78);border-radius:16px;padding:12px 10px;font-weight:700}
+.track-btn.active{color:#1b1000;background:linear-gradient(#f4d681,#b47d27);border:0}
+.popular-style{display:inline-block;margin-top:4px;color:var(--gold2);font-size:12px}
+.popular-note{padding:14px;margin:12px 0;border-radius:18px;border:1px solid rgba(216,180,90,.25);background:rgba(8,8,8,.72);backdrop-filter:blur(14px)}
+.popular-note h3{margin:0 0 8px;font-family:Georgia,serif;color:var(--gold2)}
+
 </style>
 </head>
 <body>
@@ -267,11 +276,13 @@ h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:50px;line-heig
     <div class="path-card" onclick="show('learn', navLearn)" style="background-image:url('assets/backgrounds/bg_classical_room.png')"><div class="round">♜</div><h2>PIANO <span>CLÁSSICO</span></h2><p>Explore a beleza da música clássica.</p><button class="gold-btn">›</button></div>
     <div class="path-card" onclick="show('songs', navSongs)" style="background-image:url('assets/backgrounds/bg_pop_stage.png')"><div class="round">♪</div><h2>PIANO <span>POPULAR</span></h2><p>Toque as músicas que você ama.</p><button class="gold-btn">›</button></div>
   </div>
+  <div class="popular-note" onclick="show('learn', navLearn); switchLearningTrack('popular')" style="margin-top:14px; cursor:pointer"><h3>Trilha Popular Completa</h3><p class="subtitle">Jazz, blues, bossa nova, samba, choro, salsa, afro-cuban, pop, rock, improvisação e repertório.</p></div>
 </section>
 
 <section class="screen" id="learn" style="--bg:url('assets/backgrounds/bg_classical_room.png')">
   <div class="topbar"><div class="icon-btn" onclick="show('home')">‹</div><div class="logo-mini"><div class="logo-mark">♬</div><div class="logo-text"><b>Mundo do Piano</b><span>WORLD KEY</span></div></div><div class="icon-btn" onclick="openModal('Cronograma pedagógico baseado nos métodos tradicionais mais usados: Leila Fletcher, Bastien, Beyer, Hanon, Czerny, Burgmüller, Bach, Chopin e Beethoven. Depois seus PDFs entram nas pastas /lessons/.')">?</div></div>
-  <div class="hero"><div class="eyebrow">Lições e métodos cronológicos</div><h1>PIANO<br><span class="gold">CLÁSSICO</span></h1></div>
+  <div class="hero"><div class="eyebrow" id="learnHeroEyebrow">Lições e métodos cronológicos</div><h1 id="learnHeroTitle">PIANO<br><span class="gold">CLÁSSICO</span></h1></div>
+  <div class="track-switch"><button id="trackClassic" class="track-btn active" onclick="switchLearningTrack('classic')">Clássico</button><button id="trackPopular" class="track-btn" onclick="switchLearningTrack('popular')">Popular</button></div>
   <div class="tabs"><div class="tab active" onclick="setLearnTab('lessons', this)">LIÇÕES</div><div class="tab" onclick="setLearnTab('methods', this)">MÉTODOS</div></div>
   <div id="learnLessons">
     <div class="module-list" id="moduleList">
@@ -387,7 +398,7 @@ h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:50px;line-heig
   </div>
 </section>
 
-<div class="build">v0.9.0_20260428_1632</div>
+<div class="build">v1.0.1_20260429_1342 - caminhos popular corrigidos</div>
 <nav class="nav">
   <button id="navLearn" class="active" onclick="show('learn',this)"><span class="i">🎓</span>Aprender</button>
   <button id="navSongs" onclick="show('songs',this)"><span class="i">♫</span>Músicas</button>
@@ -448,11 +459,93 @@ h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:50px;line-heig
 </div>
 
 <script>
-const curriculum = [{"id": "iniciante", "level": 1, "title": "Iniciante", "methods": ["Leila Fletcher Piano Course", "Bastien Piano Basics", "Hanon Preparatório"], "goal": "Construir base de postura, leitura inicial e coordenação simples.", "lessons": [{"id": "iniciante-01", "title": "Postura e posição das mãos", "xp": 15, "pdf": "lessons/iniciante/postura_maos.pdf"}, {"id": "iniciante-02", "title": "Numeração dos dedos e teclas brancas", "xp": 20, "pdf": "lessons/iniciante/dedos_teclas.pdf"}, {"id": "iniciante-03", "title": "Primeiras notas no pentagrama", "xp": 25, "pdf": "lessons/iniciante/primeiras_notas.pdf"}, {"id": "iniciante-04", "title": "Pulso, compasso e ritmo simples", "xp": 30, "pdf": "lessons/iniciante/ritmo_simples.pdf"}]}, {"id": "elementar", "level": 2, "title": "Elementar", "methods": ["Beyer Op.101", "Czerny Op.599", "Hanon Exercícios 1–10"], "goal": "Evoluir leitura, independência básica das mãos, escalas e acompanhamento simples.", "lessons": [{"id": "elementar-01", "title": "Leitura nas claves de sol e fá", "xp": 35, "pdf": "lessons/elementar/claves_sol_fa.pdf"}, {"id": "elementar-02", "title": "Escalas maiores iniciais", "xp": 40, "pdf": "lessons/elementar/escalas_maiores.pdf"}, {"id": "elementar-03", "title": "Coordenação das mãos", "xp": 45, "pdf": "lessons/elementar/coordenacao_maos.pdf"}, {"id": "elementar-04", "title": "Pequenas peças progressivas", "xp": 50, "pdf": "lessons/elementar/pecas_progressivas.pdf"}]}, {"id": "intermediario", "level": 3, "title": "Intermediário", "methods": ["Burgmüller Op.100", "Bach Pequenos Prelúdios", "Sonatinas fáceis"], "goal": "Trabalhar fraseado, dinâmica, articulação, pedal e repertório clássico estruturado.", "lessons": [{"id": "intermediario-01", "title": "Dinâmica e articulação", "xp": 55, "pdf": "lessons/intermediario/dinamica_articulacao.pdf"}, {"id": "intermediario-02", "title": "Pedal e fraseado", "xp": 60, "pdf": "lessons/intermediario/pedal_fraseado.pdf"}, {"id": "intermediario-03", "title": "Estudos expressivos", "xp": 65, "pdf": "lessons/intermediario/estudos_expressivos.pdf"}, {"id": "intermediario-04", "title": "Bach e independência melódica", "xp": 70, "pdf": "lessons/intermediario/bach_independencia.pdf"}]}, {"id": "avancado", "level": 4, "title": "Avançado", "methods": ["Czerny Op.299", "Bach Invenções", "Sonatas clássicas"], "goal": "Desenvolver velocidade, controle técnico, contraponto, ornamentos e interpretação.", "lessons": [{"id": "avancado-01", "title": "Técnica de velocidade", "xp": 80, "pdf": "lessons/avancado/tecnica_velocidade.pdf"}, {"id": "avancado-02", "title": "Contraponto e invenções", "xp": 85, "pdf": "lessons/avancado/contraponto_invencoes.pdf"}, {"id": "avancado-03", "title": "Sonatinas e forma clássica", "xp": 90, "pdf": "lessons/avancado/sonatinas_forma.pdf"}, {"id": "avancado-04", "title": "Interpretação avançada", "xp": 100, "pdf": "lessons/avancado/interpretacao_avancada.pdf"}]}, {"id": "aperfeicoamento", "level": 5, "title": "Aperfeiçoamento", "methods": ["Chopin Estudos", "Beethoven Sonatas", "Liszt / repertório virtuosístico"], "goal": "Preparar performance, refinamento técnico, musicalidade e repertório de alto nível.", "lessons": [{"id": "aperfeicoamento-01", "title": "Estudos virtuosísticos", "xp": 120, "pdf": "lessons/aperfeicoamento/estudos_virtuosisticos.pdf"}, {"id": "aperfeicoamento-02", "title": "Sonatas e obras extensas", "xp": 140, "pdf": "lessons/aperfeicoamento/sonatas_obras.pdf"}, {"id": "aperfeicoamento-03", "title": "Performance e memória musical", "xp": 160, "pdf": "lessons/aperfeicoamento/performance_memoria.pdf"}, {"id": "aperfeicoamento-04", "title": "Recital final", "xp": 200, "pdf": "lessons/aperfeicoamento/recital_final.pdf"}]}];
+const curriculum = [{"id": "00_teoria_musical", "level": 0, "title": "Teoria Musical", "methods": ["Bohumil Med", "Osvaldo Lacerda", "Pozzoli"], "goal": "Base teórica paralela para apoiar leitura, ditado, harmonia e percepção.", "lessons": [{"id": "00_teoria_musical-01", "title": "Bohumil Med Teoria Da Musica 4 Ediao Revista E Ampliada Cropped", "xp": 25, "pdf": "lessons/00_teoria_musical/bohumil-med-teoria-da-musica-4-ediao-revista-e-ampliada-cropped.pdf"}, {"id": "00_teoria_musical-02", "title": "Osvaldo Lacerda Compendio De Teoria Musical", "xp": 30, "pdf": "lessons/00_teoria_musical/osvaldo-lacerda-compendio-de-teoria-musical.pdf"}, {"id": "00_teoria_musical-03", "title": "Pozzoli Ditado Melodico", "xp": 35, "pdf": "lessons/00_teoria_musical/pozzoli-ditado-melodico.pdf"}, {"id": "00_teoria_musical-04", "title": "Pozzoli Guia Teorico Pratico Partes 1 E 2", "xp": 40, "pdf": "lessons/00_teoria_musical/pozzoli-guia-teorico-pratico-partes-1-e-2.pdf"}]}, {"id": "01_iniciante", "level": 1, "title": "Iniciante", "methods": ["Bastien", "Francisco Russo", "Suzuki", "Meu Piano é Divertido", "Mário Mascarenhas"], "goal": "Primeiros passos: postura, leitura inicial, coordenação e repertório muito simples.", "lessons": [{"id": "01_iniciante-01", "title": "Edna Mae Burnam A Dose Do Dia Vol 1", "xp": 30, "pdf": "lessons/01_iniciante/edna-mae-burnam-a-dose-do-dia-vol-1.pdf"}, {"id": "01_iniciante-02", "title": "Bastien Level 1", "xp": 35, "pdf": "lessons/01_iniciante/bastien-level-1.pdf"}, {"id": "01_iniciante-03", "title": "Cesi Marciano Volume 1", "xp": 40, "pdf": "lessons/01_iniciante/cesi-marciano-volume-1.pdf"}, {"id": "01_iniciante-04", "title": "Mario Mascarenhas Duas Maozinhas No Teclado", "xp": 45, "pdf": "lessons/01_iniciante/mario-mascarenhas-duas-maozinhas-no-teclado.pdf"}, {"id": "01_iniciante-05", "title": "Francisco Russo Metodo Infantil", "xp": 50, "pdf": "lessons/01_iniciante/francisco-russo-metodo-infantil.pdf"}, {"id": "01_iniciante-06", "title": "Metodos De Piano Referencia", "xp": 55, "pdf": "lessons/01_iniciante/metodos-de-piano-referencia.pdf"}, {"id": "01_iniciante-07", "title": "Meu Piano E Divertido Vol 1", "xp": 60, "pdf": "lessons/01_iniciante/meu-piano-e-divertido-vol-1.pdf"}, {"id": "01_iniciante-08", "title": "Suzuki Piano School Volume 1", "xp": 65, "pdf": "lessons/01_iniciante/suzuki-piano-school-volume-1.pdf"}]}, {"id": "02_elementar_tecnica", "level": 2, "title": "Elementar / Técnica", "methods": ["Hanon", "Ondine Melo", "Czerny / Barroso Neto"], "goal": "Leitura fluente, independência inicial, escalas, técnica diária e estudos curtos.", "lessons": [{"id": "02_elementar_tecnica-01", "title": "Benoit Exercicio 1", "xp": 45, "pdf": "lessons/02_elementar_tecnica/benoit-exercicio-1.pdf"}, {"id": "02_elementar_tecnica-02", "title": "Ondine Melo Exercicios De Tecnica Para Piano", "xp": 50, "pdf": "lessons/02_elementar_tecnica/ondine-melo-exercicios-de-tecnica-para-piano.pdf"}, {"id": "02_elementar_tecnica-03", "title": "Hanon 60 Exercicios O Pianista Virtuoso", "xp": 55, "pdf": "lessons/02_elementar_tecnica/hanon-60-exercicios-o-pianista-virtuoso.pdf"}]}, {"id": "03_intermediario", "level": 3, "title": "Intermediário", "methods": ["Burgmüller", "Bach", "Bartók", "Clementi"], "goal": "Musicalidade, fraseado, sonatinas, estudos expressivos e independência polifônica.", "lessons": [{"id": "03_intermediario-01", "title": "Burgmuller Op 100 25 Estudos", "xp": 65, "pdf": "lessons/03_intermediario/burgmuller-op-100-25-estudos.pdf"}, {"id": "03_intermediario-02", "title": "Bach Inventions 1 A 15", "xp": 70, "pdf": "lessons/03_intermediario/bach-inventions-1-a-15.pdf"}, {"id": "03_intermediario-03", "title": "Bartok Mikrokosmos Volumes 1 A 6", "xp": 75, "pdf": "lessons/03_intermediario/bartok-mikrokosmos-volumes-1-a-6.pdf"}, {"id": "03_intermediario-04", "title": "Clementi Sonatinas", "xp": 80, "pdf": "lessons/03_intermediario/clementi-sonatinas.pdf"}]}, {"id": "04_avancado", "level": 4, "title": "Avançado", "methods": ["Czerny Op.299", "Berens Op.61", "Oscar Beringer"], "goal": "Velocidade, resistência, controle técnico, estudos avançados e repertório clássico.", "lessons": [{"id": "04_avancado-01", "title": "Czerny Op 299 Vol 3", "xp": 95, "pdf": "lessons/04_avancado/czerny-op-299-vol-3.pdf"}, {"id": "04_avancado-02", "title": "Hermann Berens Op 61 Escola Da Velocidade", "xp": 100, "pdf": "lessons/04_avancado/hermann-berens-op-61-escola-da-velocidade.pdf"}, {"id": "04_avancado-03", "title": "Oscar Beringer Exercicios Tecnicos Diarios Parte 1", "xp": 105, "pdf": "lessons/04_avancado/oscar-beringer-exercicios-tecnicos-diarios-parte-1.pdf"}]}, {"id": "05_virtuose", "level": 5, "title": "Virtuose", "methods": ["Liszt"], "goal": "Aperfeiçoamento de alto nível e técnica virtuosística.", "lessons": [{"id": "05_virtuose-01", "title": "Liszt Complete Technical Exercises", "xp": 135, "pdf": "lessons/05_virtuose/liszt-complete-technical-exercises.pdf"}]}];
+
+const popularCurriculum = [{"id": "popular_fundamentos", "level": 1, "title": "Fundamentos do Piano Popular", "style": "Base geral", "goal": "Cifras, acordes, campo harmonico, levadas simples e leitura funcional.", "methods": ["Guest Arranjo", "Hal Leonard", "Keyboard Rock"], "lessons": [{"id": "pop-fund-01", "title": "Guest Arranjo 1", "xp": 30, "pdf": "lessons/popular/00_fundamentos/Guest-Arranjo-1.pdf"}, {"id": "pop-fund-02", "title": "Hal Leonard Popular Piano Solos", "xp": 35, "pdf": "lessons/popular/00_fundamentos/hal-leonard-popular-pianosolospdf-pdf-free.pdf"}, {"id": "pop-fund-03", "title": "Keyboard Rock", "xp": 40, "pdf": "lessons/popular/00_fundamentos/keyboard-rock-pdf-free.pdf"}]}, {"id": "popular_harmonia", "level": 2, "title": "Harmonia Popular", "style": "Harmonia", "goal": "Progressoes, funcoes harmonicas, substituicoes, encadeamento e rearmonizacao.", "methods": ["Almir Chediak", "Ian Guest", "Berklee Harmony"], "lessons": [{"id": "pop-harm-01", "title": "Harmonia e Improvisacao Vol. I - Almir Chediak", "xp": 50, "pdf": "lessons/popular/01_harmonia/harmonia-e-improvisacao-vol-i-almir-chediakpdf-pdf-free.pdf"}, {"id": "pop-harm-02", "title": "Harmonia Ian Guest Vol. 1", "xp": 55, "pdf": "lessons/popular/01_harmonia/harmonia-ian-guest-vol-1pdf-pdf-free.pdf"}, {"id": "pop-harm-03", "title": "Harmonia Ian Guest Vol. 2", "xp": 60, "pdf": "lessons/popular/01_harmonia/harmonia-ian-guest-vol-2-pdf-free.pdf"}, {"id": "pop-harm-04", "title": "Berklee Harmony 1-2-3-4", "xp": 70, "pdf": "lessons/popular/01_harmonia/harmony-1-2-3-4-berklee-4-pdf-free.pdf"}]}, {"id": "popular_jazz", "level": 3, "title": "Jazz Piano", "style": "Jazz", "goal": "Voicings, standards, swing, reharmonizacao e leitura de lead sheet.", "methods": ["Berklee Jazz Piano", "Dan Haerle", "Real Book", "John Mehegan", "Mark Levine"], "lessons": [{"id": "pop-jazz-01", "title": "Berklee Jazz Piano - Ray Santisi", "xp": 80, "pdf": "lessons/popular/02_jazz/berklee-jazz-piano-ray-santisi-pdf-free.pdf"}, {"id": "pop-jazz-02", "title": "Dan Haerle - Jazz Rock Voicings", "xp": 85, "pdf": "lessons/popular/02_jazz/dan-haerle-jazz-rock-voicings-for-the-contemporary-keyboard-playerpdf-pdf-free.pdf"}, {"id": "pop-jazz-03", "title": "Jazz Real Book", "xp": 90, "pdf": "lessons/popular/02_jazz/jazz-real-book-pdf-free (1).pdf"}, {"id": "pop-jazz-04", "title": "John Mehegan - Improvising Jazz Piano", "xp": 95, "pdf": "lessons/popular/02_jazz/john-mehegan-improvising-jazz-pianopdf-2-pdf-free.pdf"}, {"id": "pop-jazz-05", "title": "The Jazz Piano Book - Mark Levine", "xp": 100, "pdf": "lessons/popular/02_jazz/the-jazz-piano-book-mark-levine-pdf-free (1).pdf"}, {"id": "pop-jazz-06", "title": "The Jazz Theory Book - Mark Levine", "xp": 105, "pdf": "lessons/popular/02_jazz/the-jazz-theory-book-mark-levine-pdf-free.pdf"}]}, {"id": "popular_blues", "level": 3, "title": "Blues Piano", "style": "Blues", "goal": "12-bar blues, shuffle, walking bass, riffs, licks e improvisacao blues.", "methods": ["Blues Piano Keyboard", "Leo Alfassy", "Tim Richards"], "lessons": [{"id": "pop-blues-01", "title": "Blues Piano Keyboard", "xp": 70, "pdf": "lessons/popular/03_blues/blues-piano-keyboard-pdf-free.pdf"}, {"id": "pop-blues-02", "title": "Leo Alfassy - Blues Hanon", "xp": 75, "pdf": "lessons/popular/03_blues/Leo-Alfassy-Blues-Hanon_-Authentic-progressive-exercises-and-etudes-for-the-contemporary-piano-student-Theory_-Development_-Application.pdf"}, {"id": "pop-blues-03", "title": "Tim Richards - Improvising Blues Piano", "xp": 80, "pdf": "lessons/popular/03_blues/tim-richards-improvising-blues-pianopdf-pdf-free.pdf"}]}, {"id": "popular_brasileiro", "level": 4, "title": "Piano Brasileiro", "style": "Samba, Bossa, Choro e MPB", "goal": "Levadas brasileiras, sincopes, harmonia de MPB, samba, bossa nova e choro.", "methods": ["Nelson Faria", "Almir Chediak", "Marco Pereira", "Tom Jobim", "Djavan"], "lessons": [{"id": "pop-br-01", "title": "A Arte da Improvisacao - Nelson Faria", "xp": 85, "pdf": "lessons/popular/04_brasileiro/a-arte-da-improvisao-nelson-faria-pdf-free.pdf"}, {"id": "pop-br-02", "title": "Bossa Nova 1 - Almir Chediak", "xp": 90, "pdf": "lessons/popular/04_brasileiro/bossa-nova-1-almir-chediak-3-pdf-free.pdf"}, {"id": "pop-br-03", "title": "Brazilian Samba and Choro Style Analysis", "xp": 95, "pdf": "lessons/popular/04_brasileiro/brazilian-samba-and-choro-style-analysis-pdf-free.pdf"}, {"id": "pop-br-04", "title": "Ritmos Brasileiros - Marco Pereira", "xp": 100, "pdf": "lessons/popular/04_brasileiro/ritmos-brasileiros-marco-pereira-pdf-free.pdf"}, {"id": "pop-br-05", "title": "Musica Popular Instrumental Brasileira", "xp": 105, "pdf": "lessons/popular/04_brasileiro/rodrigues-musica-popular-instrumental-brasileira-1-pdf-free.pdf"}, {"id": "pop-br-06", "title": "Songbook Djavan Vol. 1", "xp": 110, "pdf": "lessons/popular/04_brasileiro/songbook-djavan-vol1ampamp2-almir-chediak-pdf-free.pdf"}, {"id": "pop-br-07", "title": "Songbook Tom Jobim Vol. 1-2-3", "xp": 115, "pdf": "lessons/popular/04_brasileiro/songbook-tom-jobim-vol-1-2-e-3-almir-chediak-pdf-free.pdf"}]}, {"id": "popular_latin", "level": 4, "title": "Latin Piano", "style": "Salsa, Afro-Cuban e Latin Jazz", "goal": "Clave, montuno, tumbao, salsa, afro-cuban piano e latin jazz.", "methods": ["Afro-Cuban Piano", "Latin Jazz Piano", "Peter Deneff"], "lessons": [{"id": "pop-latin-01", "title": "Afro-Cuban Metodo de Piano", "xp": 90, "pdf": "lessons/popular/05_latin/afro-cuban-metodo-de-piano-2-pdf-free.pdf"}, {"id": "pop-latin-02", "title": "Latin Jazz Piano", "xp": 95, "pdf": "lessons/popular/05_latin/latin-jazz-piano-4-pdf-free.pdf"}, {"id": "pop-latin-03", "title": "Peter Deneff - Salsa Hanon", "xp": 100, "pdf": "lessons/popular/05_latin/peter-deneff-salsa-hanonpdf-3-pdf-free.pdf"}]}, {"id": "popular_pop_rock", "level": 2, "title": "Pop, Rock e Teclado Contemporaneo", "style": "Pop/Rock", "goal": "Piano e teclado em banda, pop, rock, pads, arpejos, levadas e solos.", "methods": ["Keyboard Rock"], "lessons": [{"id": "pop-rock-01", "title": "Keyboard Rock", "xp": 50, "pdf": "lessons/popular/06_pop_rock/keyboard-rock-pdf-free.pdf"}]}, {"id": "popular_improvisacao", "level": 5, "title": "Improvisacao Avancada", "style": "Improvisacao", "goal": "Linguagem propria, padroes, frases, transcricoes, real book e fluencia avancada.", "methods": ["Berklee", "Bill Evans", "Jerry Coker", "Kenny Werner", "Oscar Peterson", "Real Book"], "lessons": [{"id": "pop-imp-01", "title": "Berklee Jazz Improvisacao", "xp": 110, "pdf": "lessons/popular/07_improvisacao/berklee-jazz-improvisacao-pdf-free.pdf"}, {"id": "pop-imp-02", "title": "Bill Evans Piano Transcriptions", "xp": 115, "pdf": "lessons/popular/07_improvisacao/bill-evans-piano-transcriptions-3-pdf-free.pdf"}, {"id": "pop-imp-03", "title": "Jerry Coker - Patterns for Jazz", "xp": 120, "pdf": "lessons/popular/07_improvisacao/jerry-coker-patterns-for-jazzpdf-3-pdf-free.pdf"}, {"id": "pop-imp-04", "title": "Jerry Coker - Complete Method for Improvisation", "xp": 125, "pdf": "lessons/popular/07_improvisacao/jerry-coker-the-complete-method-for-improvisation-3-pdf-free.pdf"}, {"id": "pop-imp-05", "title": "Kenny Werner - Effortless Mastery", "xp": 130, "pdf": "lessons/popular/07_improvisacao/kenny-werner-effortless-mastery-pdf-free.pdf"}, {"id": "pop-imp-06", "title": "Oscar Peterson Jazz Exercises", "xp": 135, "pdf": "lessons/popular/07_improvisacao/oscar-peterson-jazz-exercisespdf-pdf-free.pdf"}, {"id": "pop-imp-07", "title": "Real Book 6th Edition Clean Version", "xp": 140, "pdf": "lessons/popular/07_improvisacao/the-real-book-6th-edition-clean-version-hal-leonard-jazz-book-songbook-pdf-free.pdf"}]}, {"id": "popular_repertorio", "level": 5, "title": "Repertorio e Performance Popular", "style": "Repertorio", "goal": "Aplicacao em standards, MPB, gospel, pop, jazz e pratica real de palco.", "methods": ["Stylistic Etudes", "Jazz Piano Book", "Real Book", "Tim Richards"], "lessons": [{"id": "pop-rep-01", "title": "Stylistic Etudes", "xp": 120, "pdf": "lessons/popular/08_repertorio/stylistic-etudes-pdf-free.pdf"}, {"id": "pop-rep-02", "title": "The Jazz Piano Book", "xp": 125, "pdf": "lessons/popular/08_repertorio/the-jazz-piano-book-5-pdf-free.pdf"}, {"id": "pop-rep-03", "title": "Real Book 6th Edition Clean Version", "xp": 130, "pdf": "lessons/popular/08_repertorio/the-real-book-6th-edition-clean-version-hal-leonard-jazz-book-songbook-pdf-free.pdf"}, {"id": "pop-rep-04", "title": "Tim Richards - Exploring Jazz Piano Volume 1", "xp": 135, "pdf": "lessons/popular/08_repertorio/tim-richards-exploring-jazz-piano-volume-1pdf-5-pdf-free.pdf"}]}];
+let currentLearningTrack = 'classic';
 const progressKey = "mundoPianoProgress_v050";
 let progress = JSON.parse(localStorage.getItem(progressKey) || "{}");
 
-function saveProgress(){ localStorage.setItem(progressKey, JSON.stringify(progress)); renderAll(); }
+function saveProgress(){ localStorage.setItem(progressKey, JSON.stringify(progress)); 
+function switchLearningTrack(track){
+  currentLearningTrack = track;
+  document.querySelectorAll('.track-btn').forEach(b=>b.classList.remove('active'));
+  const btn = document.getElementById(track === 'classic' ? 'trackClassic' : 'trackPopular');
+  if(btn) btn.classList.add('active');
+  const heroTitle = document.getElementById('learnHeroTitle');
+  const heroEyebrow = document.getElementById('learnHeroEyebrow');
+  if(heroTitle && heroEyebrow){
+    if(track === 'popular'){
+      heroEyebrow.innerText = 'Harmonia, ritmos e improvisação';
+      heroTitle.innerHTML = 'PIANO<br><span class="gold">POPULAR</span>';
+    } else {
+      heroEyebrow.innerText = 'Lições e métodos cronológicos';
+      heroTitle.innerHTML = 'PIANO<br><span class="gold">CLÁSSICO</span>';
+    }
+  }
+  backModules();
+  renderModules();
+}
+
+const originalRenderModules = renderModules;
+renderModules = function(){
+  const box = document.getElementById('moduleCards');
+  if(!box) return;
+  if(currentLearningTrack !== 'popular'){
+    originalRenderModules();
+    return;
+  }
+  box.innerHTML = popularCurriculum.map((m,i)=>`
+    <div class="lesson-card ${modulePercent(m)===100?'done':''}" onclick="openPopularModule('${m.id}')">
+      <div class="thumb" style="background-image:url('assets/backgrounds/${['bg_pop_stage.png','bg_music_selection.png','bg_extra_1.png','bg_extra_2.png','bg_extra_3.png','bg_profile_piano.png','bg_challenges_dark.png','bg_progress_stats.png','bg_classical_room.png'][i % 9]}')"></div>
+      <div class="lesson">
+        <div class="num">${m.level}</div>
+        <h3>${m.title}</h3>
+        <span class="popular-style">${m.style || ''}</span>
+        <p>${m.goal}</p>
+        <p class="method">Métodos: ${m.methods.join(', ')}</p>
+        <div class="bar"><div class="fill" style="width:${modulePercent(m)}%"></div></div>
+      </div>
+      <div class="arrow">${modulePercent(m)===100?'✓':'›'}</div>
+    </div>`).join('');
+}
+
+function openPopularModule(id){
+  const m = popularCurriculum.find(x=>x.id===id);
+  const detail = document.getElementById('moduleDetail');
+  document.getElementById('moduleList').classList.add('hidden');
+  detail.classList.add('active');
+  detail.innerHTML = `
+    <div class="section-title"><span onclick="backModules()" style="color:var(--gold2)">‹ Voltar</span><span class="more">${modulePercent(m)}%</span></div>
+    <div class="popular-note">
+      <h3>${m.title}</h3>
+      <p class="subtitle">${m.goal}</p>
+      <p class="method">Estilo: ${m.style}</p>
+      <p class="method">Métodos principais: ${m.methods.join(', ')}</p>
+      <div class="bar"><div class="fill" style="width:${modulePercent(m)}%"></div></div>
+    </div>
+    ${m.lessons.map(l=>`
+      <div class="lesson-unit glass">
+        <div>
+          <b>${l.title}</b>
+          <small>+${l.xp} XP · Material: ${l.pdf}</small>
+          <div class="unit-actions">
+            <button class="pill-btn primary" onclick="completePopularLesson('${l.id}', '${m.id}')">${progress[l.id]?'Concluída ✓':'Marcar como concluída'}</button>
+            <button class="pill-btn" onclick="openPdf('${l.pdf}')">Abrir material</button>
+          </div>
+        </div>
+        <div class="arrow">${progress[l.id]?'✓':'›'}</div>
+      </div>`).join('')}
+  `;
+}
+
+function completePopularLesson(id, moduleId){
+  progress[id] = true;
+  saveProgress();
+  openPopularModule(moduleId);
+}
+
+renderAll(); }
 
 function show(id, el){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -536,10 +629,10 @@ function playLesson(path){
 }
 
 function openPdf(path){
-  if(path && path.toLowerCase().endsWith('.pdf')){
+  if(path){
     window.open(path, '_blank');
   } else {
-    openModal('Material da lição', 'PDF ainda não inserido. Coloque o arquivo real no caminho: ' + path);
+    openModal('Material da lição', 'Caminho do material não cadastrado.');
   }
 }
 
@@ -572,6 +665,85 @@ function renderProgress(){
 }
 
 function renderAll(){ renderModules(); renderProgress(); }
+
+function switchLearningTrack(track){
+  currentLearningTrack = track;
+  document.querySelectorAll('.track-btn').forEach(b=>b.classList.remove('active'));
+  const btn = document.getElementById(track === 'classic' ? 'trackClassic' : 'trackPopular');
+  if(btn) btn.classList.add('active');
+  const heroTitle = document.getElementById('learnHeroTitle');
+  const heroEyebrow = document.getElementById('learnHeroEyebrow');
+  if(heroTitle && heroEyebrow){
+    if(track === 'popular'){
+      heroEyebrow.innerText = 'Harmonia, ritmos e improvisação';
+      heroTitle.innerHTML = 'PIANO<br><span class="gold">POPULAR</span>';
+    } else {
+      heroEyebrow.innerText = 'Lições e métodos cronológicos';
+      heroTitle.innerHTML = 'PIANO<br><span class="gold">CLÁSSICO</span>';
+    }
+  }
+  backModules();
+  renderModules();
+}
+
+const originalRenderModules = renderModules;
+renderModules = function(){
+  const box = document.getElementById('moduleCards');
+  if(!box) return;
+  if(currentLearningTrack !== 'popular'){
+    originalRenderModules();
+    return;
+  }
+  box.innerHTML = popularCurriculum.map((m,i)=>`
+    <div class="lesson-card ${modulePercent(m)===100?'done':''}" onclick="openPopularModule('${m.id}')">
+      <div class="thumb" style="background-image:url('assets/backgrounds/${['bg_pop_stage.png','bg_music_selection.png','bg_extra_1.png','bg_extra_2.png','bg_extra_3.png','bg_profile_piano.png','bg_challenges_dark.png','bg_progress_stats.png','bg_classical_room.png'][i % 9]}')"></div>
+      <div class="lesson">
+        <div class="num">${m.level}</div>
+        <h3>${m.title}</h3>
+        <span class="popular-style">${m.style || ''}</span>
+        <p>${m.goal}</p>
+        <p class="method">Métodos: ${m.methods.join(', ')}</p>
+        <div class="bar"><div class="fill" style="width:${modulePercent(m)}%"></div></div>
+      </div>
+      <div class="arrow">${modulePercent(m)===100?'✓':'›'}</div>
+    </div>`).join('');
+}
+
+function openPopularModule(id){
+  const m = popularCurriculum.find(x=>x.id===id);
+  const detail = document.getElementById('moduleDetail');
+  document.getElementById('moduleList').classList.add('hidden');
+  detail.classList.add('active');
+  detail.innerHTML = `
+    <div class="section-title"><span onclick="backModules()" style="color:var(--gold2)">‹ Voltar</span><span class="more">${modulePercent(m)}%</span></div>
+    <div class="popular-note">
+      <h3>${m.title}</h3>
+      <p class="subtitle">${m.goal}</p>
+      <p class="method">Estilo: ${m.style}</p>
+      <p class="method">Métodos principais: ${m.methods.join(', ')}</p>
+      <div class="bar"><div class="fill" style="width:${modulePercent(m)}%"></div></div>
+    </div>
+    ${m.lessons.map(l=>`
+      <div class="lesson-unit glass">
+        <div>
+          <b>${l.title}</b>
+          <small>+${l.xp} XP · Material: ${l.pdf}</small>
+          <div class="unit-actions">
+            <button class="pill-btn primary" onclick="completePopularLesson('${l.id}', '${m.id}')">${progress[l.id]?'Concluída ✓':'Marcar como concluída'}</button>
+            <button class="pill-btn" onclick="openPdf('${l.pdf}')">Abrir material</button>
+          </div>
+        </div>
+        <div class="arrow">${progress[l.id]?'✓':'›'}</div>
+      </div>`).join('')}
+  `;
+}
+
+function completePopularLesson(id, moduleId){
+  progress[id] = true;
+  saveProgress();
+  openPopularModule(moduleId);
+}
+
 renderAll();
 
 
