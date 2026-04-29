@@ -1,5 +1,5 @@
 {
-  "version": "v0.9.2_20260428_2044",
+  "version": "v1.0.1_20260429_1342",
   "project": "Mundo do Piano - World Key",
-  "fix": "Caminhos dos PDFs corrigidos, pacote leve sem arquivos PDF pesados."
+  "phase": "v1.0.1 caminhos popular corrigidos pelos prints"
 }

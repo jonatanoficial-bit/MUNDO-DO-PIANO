@@ -1,0 +1,366 @@
+{
+  "version": "v1.0.1_20260429_1342",
+  "title": "Piano Popular",
+  "modules": [
+    {
+      "id": "popular_fundamentos",
+      "level": 1,
+      "title": "Fundamentos do Piano Popular",
+      "style": "Base geral",
+      "goal": "Cifras, acordes, campo harmonico, levadas simples e leitura funcional.",
+      "methods": [
+        "Guest Arranjo",
+        "Hal Leonard",
+        "Keyboard Rock"
+      ],
+      "lessons": [
+        {
+          "id": "pop-fund-01",
+          "title": "Guest Arranjo 1",
+          "xp": 30,
+          "pdf": "lessons/popular/00_fundamentos/Guest-Arranjo-1.pdf"
+        },
+        {
+          "id": "pop-fund-02",
+          "title": "Hal Leonard Popular Piano Solos",
+          "xp": 35,
+          "pdf": "lessons/popular/00_fundamentos/hal-leonard-popular-pianosolospdf-pdf-free.pdf"
+        },
+        {
+          "id": "pop-fund-03",
+          "title": "Keyboard Rock",
+          "xp": 40,
+          "pdf": "lessons/popular/00_fundamentos/keyboard-rock-pdf-free.pdf"
+        }
+      ]
+    },
+    {
+      "id": "popular_harmonia",
+      "level": 2,
+      "title": "Harmonia Popular",
+      "style": "Harmonia",
+      "goal": "Progressoes, funcoes harmonicas, substituicoes, encadeamento e rearmonizacao.",
+      "methods": [
+        "Almir Chediak",
+        "Ian Guest",
+        "Berklee Harmony"
+      ],
+      "lessons": [
+        {
+          "id": "pop-harm-01",
+          "title": "Harmonia e Improvisacao Vol. I - Almir Chediak",
+          "xp": 50,
+          "pdf": "lessons/popular/01_harmonia/harmonia-e-improvisacao-vol-i-almir-chediakpdf-pdf-free.pdf"
+        },
+        {
+          "id": "pop-harm-02",
+          "title": "Harmonia Ian Guest Vol. 1",
+          "xp": 55,
+          "pdf": "lessons/popular/01_harmonia/harmonia-ian-guest-vol-1pdf-pdf-free.pdf"
+        },
+        {
+          "id": "pop-harm-03",
+          "title": "Harmonia Ian Guest Vol. 2",
+          "xp": 60,
+          "pdf": "lessons/popular/01_harmonia/harmonia-ian-guest-vol-2-pdf-free.pdf"
+        },
+        {
+          "id": "pop-harm-04",
+          "title": "Berklee Harmony 1-2-3-4",
+          "xp": 70,
+          "pdf": "lessons/popular/01_harmonia/harmony-1-2-3-4-berklee-4-pdf-free.pdf"
+        }
+      ]
+    },
+    {
+      "id": "popular_jazz",
+      "level": 3,
+      "title": "Jazz Piano",
+      "style": "Jazz",
+      "goal": "Voicings, standards, swing, reharmonizacao e leitura de lead sheet.",
+      "methods": [
+        "Berklee Jazz Piano",
+        "Dan Haerle",
+        "Real Book",
+        "John Mehegan",
+        "Mark Levine"
+      ],
+      "lessons": [
+        {
+          "id": "pop-jazz-01",
+          "title": "Berklee Jazz Piano - Ray Santisi",
+          "xp": 80,
+          "pdf": "lessons/popular/02_jazz/berklee-jazz-piano-ray-santisi-pdf-free.pdf"
+        },
+        {
+          "id": "pop-jazz-02",
+          "title": "Dan Haerle - Jazz Rock Voicings",
+          "xp": 85,
+          "pdf": "lessons/popular/02_jazz/dan-haerle-jazz-rock-voicings-for-the-contemporary-keyboard-playerpdf-pdf-free.pdf"
+        },
+        {
+          "id": "pop-jazz-03",
+          "title": "Jazz Real Book",
+          "xp": 90,
+          "pdf": "lessons/popular/02_jazz/jazz-real-book-pdf-free (1).pdf"
+        },
+        {
+          "id": "pop-jazz-04",
+          "title": "John Mehegan - Improvising Jazz Piano",
+          "xp": 95,
+          "pdf": "lessons/popular/02_jazz/john-mehegan-improvising-jazz-pianopdf-2-pdf-free.pdf"
+        },
+        {
+          "id": "pop-jazz-05",
+          "title": "The Jazz Piano Book - Mark Levine",
+          "xp": 100,
+          "pdf": "lessons/popular/02_jazz/the-jazz-piano-book-mark-levine-pdf-free (1).pdf"
+        },
+        {
+          "id": "pop-jazz-06",
+          "title": "The Jazz Theory Book - Mark Levine",
+          "xp": 105,
+          "pdf": "lessons/popular/02_jazz/the-jazz-theory-book-mark-levine-pdf-free.pdf"
+        }
+      ]
+    },
+    {
+      "id": "popular_blues",
+      "level": 3,
+      "title": "Blues Piano",
+      "style": "Blues",
+      "goal": "12-bar blues, shuffle, walking bass, riffs, licks e improvisacao blues.",
+      "methods": [
+        "Blues Piano Keyboard",
+        "Leo Alfassy",
+        "Tim Richards"
+      ],
+      "lessons": [
+        {
+          "id": "pop-blues-01",
+          "title": "Blues Piano Keyboard",
+          "xp": 70,
+          "pdf": "lessons/popular/03_blues/blues-piano-keyboard-pdf-free.pdf"
+        },
+        {
+          "id": "pop-blues-02",
+          "title": "Leo Alfassy - Blues Hanon",
+          "xp": 75,
+          "pdf": "lessons/popular/03_blues/Leo-Alfassy-Blues-Hanon_-Authentic-progressive-exercises-and-etudes-for-the-contemporary-piano-student-Theory_-Development_-Application.pdf"
+        },
+        {
+          "id": "pop-blues-03",
+          "title": "Tim Richards - Improvising Blues Piano",
+          "xp": 80,
+          "pdf": "lessons/popular/03_blues/tim-richards-improvising-blues-pianopdf-pdf-free.pdf"
+        }
+      ]
+    },
+    {
+      "id": "popular_brasileiro",
+      "level": 4,
+      "title": "Piano Brasileiro",
+      "style": "Samba, Bossa, Choro e MPB",
+      "goal": "Levadas brasileiras, sincopes, harmonia de MPB, samba, bossa nova e choro.",
+      "methods": [
+        "Nelson Faria",
+        "Almir Chediak",
+        "Marco Pereira",
+        "Tom Jobim",
+        "Djavan"
+      ],
+      "lessons": [
+        {
+          "id": "pop-br-01",
+          "title": "A Arte da Improvisacao - Nelson Faria",
+          "xp": 85,
+          "pdf": "lessons/popular/04_brasileiro/a-arte-da-improvisao-nelson-faria-pdf-free.pdf"
+        },
+        {
+          "id": "pop-br-02",
+          "title": "Bossa Nova 1 - Almir Chediak",
+          "xp": 90,
+          "pdf": "lessons/popular/04_brasileiro/bossa-nova-1-almir-chediak-3-pdf-free.pdf"
+        },
+        {
+          "id": "pop-br-03",
+          "title": "Brazilian Samba and Choro Style Analysis",
+          "xp": 95,
+          "pdf": "lessons/popular/04_brasileiro/brazilian-samba-and-choro-style-analysis-pdf-free.pdf"
+        },
+        {
+          "id": "pop-br-04",
+          "title": "Ritmos Brasileiros - Marco Pereira",
+          "xp": 100,
+          "pdf": "lessons/popular/04_brasileiro/ritmos-brasileiros-marco-pereira-pdf-free.pdf"
+        },
+        {
+          "id": "pop-br-05",
+          "title": "Musica Popular Instrumental Brasileira",
+          "xp": 105,
+          "pdf": "lessons/popular/04_brasileiro/rodrigues-musica-popular-instrumental-brasileira-1-pdf-free.pdf"
+        },
+        {
+          "id": "pop-br-06",
+          "title": "Songbook Djavan Vol. 1",
+          "xp": 110,
+          "pdf": "lessons/popular/04_brasileiro/songbook-djavan-vol1ampamp2-almir-chediak-pdf-free.pdf"
+        },
+        {
+          "id": "pop-br-07",
+          "title": "Songbook Tom Jobim Vol. 1-2-3",
+          "xp": 115,
+          "pdf": "lessons/popular/04_brasileiro/songbook-tom-jobim-vol-1-2-e-3-almir-chediak-pdf-free.pdf"
+        }
+      ]
+    },
+    {
+      "id": "popular_latin",
+      "level": 4,
+      "title": "Latin Piano",
+      "style": "Salsa, Afro-Cuban e Latin Jazz",
+      "goal": "Clave, montuno, tumbao, salsa, afro-cuban piano e latin jazz.",
+      "methods": [
+        "Afro-Cuban Piano",
+        "Latin Jazz Piano",
+        "Peter Deneff"
+      ],
+      "lessons": [
+        {
+          "id": "pop-latin-01",
+          "title": "Afro-Cuban Metodo de Piano",
+          "xp": 90,
+          "pdf": "lessons/popular/05_latin/afro-cuban-metodo-de-piano-2-pdf-free.pdf"
+        },
+        {
+          "id": "pop-latin-02",
+          "title": "Latin Jazz Piano",
+          "xp": 95,
+          "pdf": "lessons/popular/05_latin/latin-jazz-piano-4-pdf-free.pdf"
+        },
+        {
+          "id": "pop-latin-03",
+          "title": "Peter Deneff - Salsa Hanon",
+          "xp": 100,
+          "pdf": "lessons/popular/05_latin/peter-deneff-salsa-hanonpdf-3-pdf-free.pdf"
+        }
+      ]
+    },
+    {
+      "id": "popular_pop_rock",
+      "level": 2,
+      "title": "Pop, Rock e Teclado Contemporaneo",
+      "style": "Pop/Rock",
+      "goal": "Piano e teclado em banda, pop, rock, pads, arpejos, levadas e solos.",
+      "methods": [
+        "Keyboard Rock"
+      ],
+      "lessons": [
+        {
+          "id": "pop-rock-01",
+          "title": "Keyboard Rock",
+          "xp": 50,
+          "pdf": "lessons/popular/06_pop_rock/keyboard-rock-pdf-free.pdf"
+        }
+      ]
+    },
+    {
+      "id": "popular_improvisacao",
+      "level": 5,
+      "title": "Improvisacao Avancada",
+      "style": "Improvisacao",
+      "goal": "Linguagem propria, padroes, frases, transcricoes, real book e fluencia avancada.",
+      "methods": [
+        "Berklee",
+        "Bill Evans",
+        "Jerry Coker",
+        "Kenny Werner",
+        "Oscar Peterson",
+        "Real Book"
+      ],
+      "lessons": [
+        {
+          "id": "pop-imp-01",
+          "title": "Berklee Jazz Improvisacao",
+          "xp": 110,
+          "pdf": "lessons/popular/07_improvisacao/berklee-jazz-improvisacao-pdf-free.pdf"
+        },
+        {
+          "id": "pop-imp-02",
+          "title": "Bill Evans Piano Transcriptions",
+          "xp": 115,
+          "pdf": "lessons/popular/07_improvisacao/bill-evans-piano-transcriptions-3-pdf-free.pdf"
+        },
+        {
+          "id": "pop-imp-03",
+          "title": "Jerry Coker - Patterns for Jazz",
+          "xp": 120,
+          "pdf": "lessons/popular/07_improvisacao/jerry-coker-patterns-for-jazzpdf-3-pdf-free.pdf"
+        },
+        {
+          "id": "pop-imp-04",
+          "title": "Jerry Coker - Complete Method for Improvisation",
+          "xp": 125,
+          "pdf": "lessons/popular/07_improvisacao/jerry-coker-the-complete-method-for-improvisation-3-pdf-free.pdf"
+        },
+        {
+          "id": "pop-imp-05",
+          "title": "Kenny Werner - Effortless Mastery",
+          "xp": 130,
+          "pdf": "lessons/popular/07_improvisacao/kenny-werner-effortless-mastery-pdf-free.pdf"
+        },
+        {
+          "id": "pop-imp-06",
+          "title": "Oscar Peterson Jazz Exercises",
+          "xp": 135,
+          "pdf": "lessons/popular/07_improvisacao/oscar-peterson-jazz-exercisespdf-pdf-free.pdf"
+        },
+        {
+          "id": "pop-imp-07",
+          "title": "Real Book 6th Edition Clean Version",
+          "xp": 140,
+          "pdf": "lessons/popular/07_improvisacao/the-real-book-6th-edition-clean-version-hal-leonard-jazz-book-songbook-pdf-free.pdf"
+        }
+      ]
+    },
+    {
+      "id": "popular_repertorio",
+      "level": 5,
+      "title": "Repertorio e Performance Popular",
+      "style": "Repertorio",
+      "goal": "Aplicacao em standards, MPB, gospel, pop, jazz e pratica real de palco.",
+      "methods": [
+        "Stylistic Etudes",
+        "Jazz Piano Book",
+        "Real Book",
+        "Tim Richards"
+      ],
+      "lessons": [
+        {
+          "id": "pop-rep-01",
+          "title": "Stylistic Etudes",
+          "xp": 120,
+          "pdf": "lessons/popular/08_repertorio/stylistic-etudes-pdf-free.pdf"
+        },
+        {
+          "id": "pop-rep-02",
+          "title": "The Jazz Piano Book",
+          "xp": 125,
+          "pdf": "lessons/popular/08_repertorio/the-jazz-piano-book-5-pdf-free.pdf"
+        },
+        {
+          "id": "pop-rep-03",
+          "title": "Real Book 6th Edition Clean Version",
+          "xp": 130,
+          "pdf": "lessons/popular/08_repertorio/the-real-book-6th-edition-clean-version-hal-leonard-jazz-book-songbook-pdf-free.pdf"
+        },
+        {
+          "id": "pop-rep-04",
+          "title": "Tim Richards - Exploring Jazz Piano Volume 1",
+          "xp": 135,
+          "pdf": "lessons/popular/08_repertorio/tim-richards-exploring-jazz-piano-volume-1pdf-5-pdf-free.pdf"
+        }
+      ]
+    }
+  ]
+}
